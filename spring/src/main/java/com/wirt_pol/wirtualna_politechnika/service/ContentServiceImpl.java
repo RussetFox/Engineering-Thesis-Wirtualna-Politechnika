@@ -39,7 +39,7 @@ public class ContentServiceImpl implements ContentService {
 
     @Override
     public List<ContentDTO> fetchContentByPage(int page) {
-        int pageSize = 5;
+        int pageSize = 15;
         Pageable pageable = PageRequest.of(page - 1, pageSize, Sort.by("creationTime").descending());
         List<Content> contentList = contentRepository.findAll(pageable).getContent();
         List<ContentDTO> dtoList = new ArrayList<>();
@@ -106,6 +106,7 @@ public class ContentServiceImpl implements ContentService {
     public List<String> getMostRepeatingTagsWithPrefix(String prefix) {
         List<Content> contentList = (List<Content>) contentRepository.findAll();
         Map<String, Integer> tagCountMap = new HashMap<>();
+
         for (Content content : contentList) {
             for (String tag : content.getTags()) {
                 if (tag.contains(prefix)) {
