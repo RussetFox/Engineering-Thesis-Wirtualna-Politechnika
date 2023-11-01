@@ -1,0 +1,31 @@
+.navbar-blue{
+    position: absolute;
+    bottom:0;
+    background: linear-gradient(180deg, rgba(35, 45, 80, 0.30) 0%, #232D50 100%);
+    height: 7%;
+    width: 100%;
+    gap: 0.5%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.navbar-blue .logo-nav{
+    height: 100%;
+    border: none;
+    background-color: transparent;
+}
+.navbar-blue .nav-button{
+    background-color: transparent;
+    width: 50%;
+    border: none;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    height: 100%;
+    color: white;
+    font-weight: 700;
+}
+.navbar-blue .filler{
+    width: 90%;
+    height: 100%;
+    background-color: transparent;
+}

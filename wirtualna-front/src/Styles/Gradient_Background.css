@@ -1,0 +1,43 @@
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-background {
+  /* Applying the specified colors in a repeating gradient */
+  background: linear-gradient(249deg,
+      #813CAC 9.37%,
+      #A61767 29.34%,
+      #A61767 36%,
+      #B62D7A 44.43%,
+      #BC3581 54.2%,
+      #A61767 65.29%,
+      #A61767 75.94%,
+      #813CAC 94.58%);
+
+  /*Ustawienie gradientu w celach*/
+  background-size: 200% 200%;
+
+
+  /* Set up the animation */
+  animation: gradientAnimation 12s ease infinite;
+
+  /* Below are your pre-existing styles to ensure full screen and centering */
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
