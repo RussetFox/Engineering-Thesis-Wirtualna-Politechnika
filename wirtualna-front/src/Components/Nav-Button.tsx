@@ -1,17 +1,23 @@
 import React from "react";
-import "../Styles/Nav-Button.css"
+import { useNavigate } from 'react-router-dom';
 interface ButtonProps {
     text: string;
-    onClick: () =>  void;
+    pagePath: string;
 }
 
-const NavButton: React.FC<ButtonProps> = ({text, onClick}) => {
-    return(
+
+const NavButton: React.FC<ButtonProps> = ({ text, pagePath}) => {
+    const navigate = useNavigate();
+    const navigateToPage = () => {
+        navigate(pagePath)
+    }
+
+    return (
         <button
-        className="nav-button"
-        onClick={onClick}>
+            className="nav-button"
+            onClick={navigateToPage}>
             {text}
-            </button>
+        </button>
     );
 }
 export default NavButton;

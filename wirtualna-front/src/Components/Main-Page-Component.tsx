@@ -1,7 +1,6 @@
 import React from "react";
 import ScaleText from "react-scale-text"
 import Button from "./Button"
-import NavBarBlue from "./Nav-Bar-Blue"
 import PwrLogo from "../Resources/Logo/logo.png";
 
 
@@ -22,7 +21,6 @@ export default function Main_Page_Component() {
                     <Button text="Zarejestruj się" color="blue-button" onClick={() => console.log("Register")} />
                 </div>
             </div >
-            <NavBarBlue />
         </div>
     );
 }

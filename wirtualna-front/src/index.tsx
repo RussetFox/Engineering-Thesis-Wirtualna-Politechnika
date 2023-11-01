@@ -6,19 +6,18 @@ import ContactPage from './Pages/Contact-Page';
 import AboutUsPage from './Pages/About-Us-Page';
 import ContentPage from './Pages/Content-Page';
 import EditProfile from './Pages/Edit-Profile-Page';
+import MainPage from './Pages/Main-Page';
 
 
 import {
   createBrowserRouter,
   RouterProvider,
-  Route,
-  Router
 } from 'react-router-dom'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App/>,
+    element: <MainPage/>,
   },
   {
     path:'/contact',

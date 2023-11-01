@@ -1,10 +1,11 @@
 import React from 'react';
+import PreLoginLayout from '../Layout/Pre-Login-Layout';
 
 const AboutUsPage: React.FC = () => {
     return (
-        <div>
-            <h1>About Us</h1>
-        </div>
+        <PreLoginLayout>
+            <h1>About us</h1>
+        </PreLoginLayout>
     );
 };
 

@@ -1,0 +1,95 @@
+.contact-us-page {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #A61767 0%, rgba(166, 23, 103, 0.00) 100%);
+    background-blend-mode: lighten;
+    background-color: rgba(0, 0, 0, 0.938);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-us-container {
+    width: 70%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 72px;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    background: rgba(129, 60, 172, 0.72);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+}
+
+.contact-us-container h1 {
+    color: white;
+    font-weight: 700;
+    height: 3%;
+}
+
+.contact-us-container form {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    font-weight: 700;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: white;
+
+}
+
+.contact-us-container label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-us-container input {
+
+    border-radius: 25px;
+    border: 1px solid #000;
+    height: 100%;
+    background: #5D297D;
+    color: white;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    justify-content: center;
+    text-align: center;
+}
+
+.contact-us-container [type=text]{
+    width: 50%;
+    color: #E6D0D0;
+    font-weight: 700;
+    flex-shrink:initial;
+}
+
+.contact-us-container text {
+    width: 100%; /* 100% width to fill the container */
+    height: 200px; /* Set the initial height as needed */
+    padding: 5px;
+    overflow-y: scroll; /* Show a scrollbar when content overflows vertically */
+}
+.contact-us-container .test {
+    width: 500%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+}
+.contact-us-container button {
+    border-radius: 25px;
+    border: 2px solid #232D50;
+    background: rgba(172, 77, 231, 0.90);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    color: white;
+    align-self: center;
+    font-weight: 700;
+    height: 10%;
+    width: 40%
+}

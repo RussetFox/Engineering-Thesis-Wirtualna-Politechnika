@@ -1,19 +1,27 @@
 .orange-button {
     text-align: center;
+    color: white;
     font-weight: 700;
     border-radius: 44px;
+    border: 16px solid rgba(199, 87, 2, 0.35);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     width: 100%;
     height: 100%;
-    background-color: #C75702;
- text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 100%;
+    background: #C75702;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .blue-button{
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: white;
     font-weight: 700;
     line-height: normal;
     border-radius: 44px;
+    border: 16px solid rgba(35, 45, 80, 0.36);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     width: 100%;
     height: 100%;
-    background-color: blue;
+    font-size: 100%;
+    background: #232D50;
 }
