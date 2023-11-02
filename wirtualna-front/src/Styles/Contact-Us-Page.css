@@ -5,91 +5,59 @@
     background-blend-mode: lighten;
     background-color: rgba(0, 0, 0, 0.938);
     position: absolute;
-    top: 0;
-    left: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
 }
 
-.contact-us-container {
-    width: 70%;
+.contact-us-page form {
+    width: 60%;
     height: 60%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     border-radius: 72px;
     border: 1px solid rgba(0, 0, 0, 0.25);
     background: rgba(129, 60, 172, 0.72);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
-}
-
-.contact-us-container h1 {
-    color: white;
-    font-weight: 700;
-    height: 3%;
-}
-
-.contact-us-container form {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    font-weight: 700;
-    flex-direction: column;
-    justify-content: space-evenly;
-    color: white;
-
-}
-
-.contact-us-container label {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.contact-us-container input {
-
-    border-radius: 25px;
-    border: 1px solid #000;
-    height: 100%;
-    background: #5D297D;
-    color: white;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    justify-content: center;
     text-align: center;
 }
-
-.contact-us-container [type=text]{
-    width: 50%;
-    color: #E6D0D0;
+.contact-us-page h1 {
+    font-style: normal;
     font-weight: 700;
-    flex-shrink:initial;
+    font-size: 36px;
+    line-height: 44px;
+    color: #FFFFFF;
+    margin-bottom: 20px;
 }
-
-.contact-us-container text {
-    width: 100%; /* 100% width to fill the container */
-    height: 200px; /* Set the initial height as needed */
-    padding: 5px;
-    overflow-y: scroll; /* Show a scrollbar when content overflows vertically */
-}
-.contact-us-container .test {
-    width: 500%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-
-}
-.contact-us-container button {
-    border-radius: 25px;
-    border: 2px solid #232D50;
-    background: rgba(172, 77, 231, 0.90);
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+.contact-us-page label{
     color: white;
-    align-self: center;
     font-weight: 700;
+
+}
+
+.contact-us-page input, textarea{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    padding: 2%;
+    justify-content: space;
+    width: 90%;
+    border-radius: 20px;
+}
+.contact-us-page button{
+    width: 20%;
     height: 10%;
-    width: 40%
+    background: #FFFFFF;
+    border-radius: 72px;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    color: #A61767;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
 }

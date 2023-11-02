@@ -4,7 +4,7 @@ import ContactForm from "./Contact-Form";
 
 export default function Contact_Us() {
     return (
-        <div className="contact-us">
+        <div className="contact-us-page">
             <ContactForm/>
         </div>
     );
