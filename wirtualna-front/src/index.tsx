@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './Styles/index.css';
-import App from './App';
 import ContactPage from './Pages/Contact-Page';
 import AboutUsPage from './Pages/About-Us-Page';
 import ContentPage from './Pages/Content-Page';
 import EditProfile from './Pages/Edit-Profile-Page';
 import MainPage from './Pages/Main-Page';
+import LoginPage from './Pages/Login-Page';
 
 
 import {
@@ -34,6 +34,14 @@ const router = createBrowserRouter([
   {
     path:'/editprofile',
     element: <EditProfile/>,
+  },
+  {
+    path: '/login',
+    element: <LoginPage isLoginChosen = {true} />,
+  },
+  {
+    path: '/register',
+    element: <LoginPage isLoginChosen = {false} />,
   }
 ]);
 

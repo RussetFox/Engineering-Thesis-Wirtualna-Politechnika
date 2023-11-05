@@ -14,11 +14,11 @@ export default function Main_Page_Component() {
                         Wirtualna Politechnika
                     </ScaleText>
                 </div>
-                <div className="front-page-frame-login" color="orange-button">
-                    <Button text="Zaloguj się" color="orange-button" onClick={() => console.log("Login")} />
+                <div className="front-page-frame-login">
+                    <Button text="Zaloguj się" color="orange-button" pagePath="/login" />
                 </div>
                 <div className="front-page-frame-register">
-                    <Button text="Zarejestruj się" color="blue-button" onClick={() => console.log("Register")} />
+                    <Button text="Zarejestruj się" color="blue-button" pagePath="/register"/>
                 </div>
             </div >
         </div>
