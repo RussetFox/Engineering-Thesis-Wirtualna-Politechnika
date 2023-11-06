@@ -33,15 +33,16 @@
 .contact-us-page label{
     color: white;
     font-weight: 700;
-
+    display: flex;
+    flex-direction: column;
+    align-content: center;
 }
 
 .contact-us-page input, textarea{
     display: flex;
     text-align: center;
-    flex-direction: column;
-    padding: 2%;
-    justify-content: space;
+    align-self: center;
+    width: 100%;
     width: 90%;
     border-radius: 20px;
 }

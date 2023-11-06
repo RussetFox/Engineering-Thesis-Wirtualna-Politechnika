@@ -15,7 +15,7 @@ export default function Main_Page_Component() {
                     </ScaleText>
                 </div>
                 <div className="front-page-frame-login">
-                    <Button text="Zaloguj się" color="orange-button" pagePath="/login" />
+                    <Button text="Zaloguj się" color="orange-button" pagePath="/login"/>
                 </div>
                 <div className="front-page-frame-register">
                     <Button text="Zarejestruj się" color="blue-button" pagePath="/register"/>

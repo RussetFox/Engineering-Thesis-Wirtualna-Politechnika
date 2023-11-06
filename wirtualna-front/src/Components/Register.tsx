@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Register () {
   const [login, setName] = useState('');
@@ -61,6 +62,8 @@ export default function Register () {
         </div>
         <button type="submit">Zarejestruj się</button>
       </form>
+      <p>Masz już konto?</p>
+      <Link to = '/login'>Zaloguj się!</Link>
     </div>
   );
 };

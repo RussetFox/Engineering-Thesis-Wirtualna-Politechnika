@@ -1,11 +1,11 @@
 import React from 'react';
 import PreLoginLayout from '../Layout/Pre-Login-Layout';
-import LoginForm from '../Components/Login-Form';
+import RegisterForm from '../Components/Register';
 
 const RegisterPage: React.FC = () => {
     return (
         <PreLoginLayout>
-            <LoginForm isLoginChosen = {false}/>
+            <RegisterForm/>
         </PreLoginLayout>
     );
 };

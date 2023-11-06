@@ -1,15 +1,11 @@
 import React from 'react';
 import PreLoginLayout from '../Layout/Pre-Login-Layout';
-import LoginForm from '../Components/Login-Form';
+import LoginForm from '../Components/Login';
 
-interface LoginPageProps {
-    isLoginChosen: boolean;
-}
-
-const LoginPage: React.FC<LoginPageProps> = ({isLoginChosen}) => {
+const LoginPage: React.FC = () => {
     return (
         <PreLoginLayout>
-            <LoginForm isLoginChosen = {isLoginChosen} />
+            <LoginForm/>
         </PreLoginLayout>
     );
 };

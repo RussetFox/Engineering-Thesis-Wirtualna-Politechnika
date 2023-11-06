@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './Styles/index.css';
+import MainPage from './Pages/Main-Page'
 import ContactPage from './Pages/Contact-Page';
 import AboutUsPage from './Pages/About-Us-Page';
 import ContentPage from './Pages/Content-Page';
 import EditProfile from './Pages/Edit-Profile-Page';
-import MainPage from './Pages/Main-Page';
 import LoginPage from './Pages/Login-Page';
+import RegisterPage from './Pages/Register-Page';
 
 
 import {
@@ -37,11 +38,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/login',
-    element: <LoginPage isLoginChosen = {true} />,
+    element: <LoginPage/>,
   },
   {
     path: '/register',
-    element: <LoginPage isLoginChosen = {false} />,
+    element: <RegisterPage/>,
   }
 ]);
 
