@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../Styles/Login-Page.css';
+import '../Styles/Button.css';
 export default function Login() {
   const [login, setLogin] = useState(() => { return '' });
   const [password, setPassword] = useState(() => { return '' });
@@ -11,7 +12,7 @@ export default function Login() {
   };
 
   return (
-    <div className='login-page'>
+    <div className='gradient-background-claret'>
       <div className='login-form-frame'>
         <div className='login-form-data'>
           <h1>Zaloguj się</h1>

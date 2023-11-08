@@ -12,7 +12,7 @@
   }
 }
 
-.gradient-background {
+.gradient-background-mainpage {
   /* Applying the specified colors in a repeating gradient */
   background: linear-gradient(249deg,
       #813CAC 9.37%,
@@ -40,4 +40,48 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+
+.gradient-background-claret {
+  /*Gradient*/
+  background: linear-gradient(-160deg, #A61767 0%, rgba(166, 23, 103, 0.00) 100%);
+  background-color: black;
+
+  background-size: 200% 200%;
+
+  /*Animation time*/
+  animation: gradientAnimation 7s ease infinite;
+
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+.gradient-background-purple {
+  /*Gradient*/
+  background: linear-gradient(160deg, rgba(129, 60, 172, 0.76) 0%, rgba(129, 60, 172, 0.19) 100%);
+  background-color: black;
+
+  background-size: 200% 200%;
+
+  /*Animation time*/
+  animation: gradientAnimation 7s ease infinite;
+
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }

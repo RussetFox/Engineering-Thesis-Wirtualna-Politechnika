@@ -6,7 +6,7 @@ import PwrLogo from "../Resources/Logo/logo.png";
 
 export default function Main_Page_Component() {
     return (
-        <div className="gradient-background">
+        <div className="gradient-background-mainpage">
             <div className="front-page-frame">
                 <div className="front-page-frame-photo"><img src={PwrLogo} alt="H3h3h3" /></div>
                 <div className="front-page-frame-title">

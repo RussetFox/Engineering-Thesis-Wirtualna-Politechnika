@@ -17,6 +17,7 @@ export default function Register () {
   };
 
   return (
+    <div className='gradient-background-purple'>
     <div>
       <h2>Register</h2>
       <form onSubmit={handleRegister}>
@@ -64,6 +65,7 @@ export default function Register () {
       </form>
       <p>Masz już konto?</p>
       <Link to = '/login'>Zaloguj się!</Link>
+    </div>
     </div>
   );
 };
