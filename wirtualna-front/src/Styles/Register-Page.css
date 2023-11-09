@@ -1,0 +1,118 @@
+.register-form-frame {
+    border-radius: 72px;
+    border: 1px solid rgba(0, 0, 0, 0.35);
+    background: linear-gradient(90deg, rgba(129, 60, 172, 0.72) 0%, rgba(129, 60, 172, 0.43) 55.55%, rgba(166, 23, 103, 0.00) 56.03%, rgba(166, 23, 103, 0.43) 56.56%, rgba(166, 23, 103, 0.72) 100%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    width: 80%;
+    height: 70%;
+    grid-template-columns: 56% 44%;
+    grid-template-rows: 100%;
+    display: grid;
+    align-items: center;
+}
+
+.register-form-data {
+    display: flex;
+    height: 100%;
+    width: 80%;
+    flex-direction: column;
+    align-items: center;
+    grid-column:1/2;
+    justify-self: center;
+    text-align: center;
+
+}
+
+.register-form-data h1 {
+    color: white;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 20px;
+    font-weight: 700;
+    font-size: 60px;
+    justify-content: start;
+}
+
+.register-form-data form {
+    height: 80%;
+    width: 90%;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    box-sizing: border-box;
+}
+
+.register-form-data label {
+    display: block;
+    padding: 10px;
+    font-size: 30px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: white;
+    font-weight: 700;
+}
+
+.register-form-data input {
+    border-radius: 25px;
+    border: 1px solid #000;
+    background: #5D297D;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    font-size: 25px;
+    width: 100%;
+    color: white;
+    border-radius: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.register-form-data input::placeholder {
+    color: #C19D9D;
+}
+
+.register-form-data button {
+    align-self: center;
+    justify-self: end;
+    border-radius: 30px;
+    height: 15%;
+    width: 45%;
+    margin-top: 10px;
+    color: rgba(255, 255, 255, 0.90);
+    background: rgba(172, 77, 231, 0.90);
+    text-shadow: #000;
+    text-align: center;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    font-size: 30px;
+    font-weight: 700;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid red; */
+}
+
+.register-form-login {
+    color: white;
+    height: 80%;
+    width: 90%;
+    grid-column: 2/3;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    justify-content: space-between;
+}
+.register-form-login p{
+    justify-content: center;
+    width: 70%;
+    height: 60%;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-weight: 700;
+    text-align: center;
+    padding-top:15%;
+    vertical-align: middle;
+    font-size: 60px;
+}
