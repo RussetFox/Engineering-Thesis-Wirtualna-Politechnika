@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import Button from "./Button"
 import '../Styles/Login-Page.css';
 import '../Styles/Button.css';
 export default function Login() {
@@ -43,8 +43,8 @@ export default function Login() {
           </form>
         </div>
         <div className='login-form-joinus'>
-          <p>Nie masz jeszcze konta?</p>
-          <Link to='/register'>Dołącz do nas!</Link>
+          <p>Przyłącz się do prężnie rozwijającej się społeczności i <b>#bądźnabieżąco</b></p>
+          <Button text='Dołącz do nas!' color='join-us-button' pagePath = '/register' />
         </div>
       </div>
     </div>
