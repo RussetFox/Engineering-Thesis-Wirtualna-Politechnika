@@ -13,7 +13,7 @@ export default function Contact_Us_Form() {
         message: ""
     });
     const handleChange = (event: any) => {
-        const name = event.target.name
+        const name:string = event.target.name
         const value = event.target.value
         setData({...data, [name]:value})
     }
