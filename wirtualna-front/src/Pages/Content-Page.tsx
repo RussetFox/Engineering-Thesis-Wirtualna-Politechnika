@@ -1,10 +1,12 @@
 import React from 'react';
+import PostLoginLayout from '../Layout/Post-Login-Layout'
+import PostViewComponent from '../Components/Post-View-Component';
 
 const AboutUsPage: React.FC = () => {
     return (
-        <div>
-            <h1>Content</h1>
-        </div>
+        <PostLoginLayout>
+            <PostViewComponent/>
+        </PostLoginLayout>
     );
 };
 

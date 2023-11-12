@@ -1,0 +1,25 @@
+.post-login-frame {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    grid-template-columns: 18.5% 63% 18.5%;
+    grid-template-rows: 100%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 90.1%, #FFF 100%);}
+
+.left-side {
+    opacity: 0.9;
+    background: linear-gradient(90deg, #980055 0%, rgba(152, 0, 85, 0.65) 100%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.right-side {
+    opacity: 0.9;
+    background: linear-gradient(90deg, rgba(152, 0, 85, 0.65) 0%, #980055 100%);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 1px solid red;
+}
