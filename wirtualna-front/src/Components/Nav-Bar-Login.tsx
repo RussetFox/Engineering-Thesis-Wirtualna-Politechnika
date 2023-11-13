@@ -1,16 +1,18 @@
 import React from "react";
-import NavButton from './Nav-Button'
+import NavButtonLogin from './Nav-Button-Logged'
+import '../Styles/Navigation-Login-Container.css'
+import LogoPwr from '../Resources/Logo/logo.png'
+import '../Styles/Nav-Bar-Login.css'
 
-export default function NavBarLogin(){
+export default function NavBarLogin() {
     return (
-        <div className="navigation-container">Container
-        <div>Logo</div>
-        <div>Main Page Button</div>
-        <div>About us button</div>
-        <div>Contact us button</div>
-        <div>Social Media1</div>
-        <div>Social media2</div>
+        <div className="navigation-container">
+            <img src={LogoPwr} alt="Logo-Pwr" />
+            <NavButtonLogin className = "main-page" text="Strona Główna" pagePath="/contents"/>
+            <NavButtonLogin className = "edit-profile" text="O nas" pagePath="/editprofile"/>
+            <NavButtonLogin className = "about-us" text="O nas" pagePath="/aboutus"/>
+            <NavButtonLogin className = "contact-us" text="Kontakt" pagePath="/contact"/>
+            <div>Socials</div>
         </div>
     )
-
 }
