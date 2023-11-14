@@ -3,16 +3,25 @@ import NavButtonLogin from './Nav-Button-Logged'
 import '../Styles/Navigation-Login-Container.css'
 import LogoPwr from '../Resources/Logo/logo.png'
 import '../Styles/Nav-Bar-Login.css'
+import FBLogo from '../Resources/Logo/FacebookTransparent.png'
 
 export default function NavBarLogin() {
     return (
         <div className="navigation-container">
-            <img src={LogoPwr} alt="Logo-Pwr" />
-            <NavButtonLogin className = "main-page" text="Strona Główna" pagePath="/contents"/>
-            <NavButtonLogin className = "edit-profile" text="O nas" pagePath="/editprofile"/>
-            <NavButtonLogin className = "about-us" text="O nas" pagePath="/aboutus"/>
-            <NavButtonLogin className = "contact-us" text="Kontakt" pagePath="/contact"/>
-            <div>Socials</div>
+            <div className="Logo-Container">
+                <img className='Logo-Pwr' src={LogoPwr} alt="Logo-Pwr" />
+            </div>
+            <NavButtonLogin className="main-page" text="Strona Główna" pagePath="/contents" />
+            <div className="separator"></div>
+            <NavButtonLogin className="edit-profile" text="Edytuj Profil" pagePath="/editprofile" />
+            <div className="separator"></div>
+            <NavButtonLogin className="about-us" text="O nas" pagePath="/aboutus" />
+            <div className="separator"></div>
+            <NavButtonLogin className="contact-us" text="Kontakt" pagePath="/contact" />
+            <div className="socials">
+                <img src={FBLogo} alt="Facebook" />
+                <p>instagram</p>
+            </div>
         </div>
     )
 }

@@ -6,8 +6,72 @@
     align-items: center;
 }
 
-.navigation-container img{
-    width: 80%;
-    margin-top: 10%;
-    margin-bottom: 50%;
+button{
+    border: none;
+}
+
+.separator{
+    height: 2px;
+    width: 30%;
+    background: white;
+    border-radius: 50px;
+}
+
+.main-page {
+    background: none;
+    color: white;
+    font-weight: 700;
+    font-size: 40px;
+    padding-bottom: 10%;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.edit-profile{
+    background: none;
+    color: white;
+    font-weight: 700;
+    font-size: 30px;
+    padding-bottom: 10%;
+    padding-top:10%;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.about-us{
+    background: none;
+    color: white;
+    font-weight: 700;
+    font-size: 30px;
+    padding-bottom: 10%;
+    padding-top:10%;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.contact-us{
+    background: none;
+    color: white;
+    font-weight: 700;
+    font-size: 30px;
+    padding-bottom: 10%;
+    padding-top:10%;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.socials{
+    display: flex;
+    flex-direction: row;
+    align-self: end;
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+    justify-content: space-between;
+}
+.socials img{
+    width: 50%;
+    height: 50%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid red; */
 }

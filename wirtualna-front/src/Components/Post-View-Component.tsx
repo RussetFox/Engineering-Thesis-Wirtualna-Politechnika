@@ -1,4 +1,5 @@
 import React from "react";
+import '../Styles/Post-View-Component.css'
 
 export default function PostViewComponent(){
     return(
