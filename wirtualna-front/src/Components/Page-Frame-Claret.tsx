@@ -1,6 +1,7 @@
 import React from "react";
 import '../Styles/Post-Login-Container.css'
 import NavBarLogin from './Nav-Bar-Login'
+import EventFrame from './Event-Frame'
 
 export default function PostLoginFrameClaret({ children }) {
     return (
@@ -9,7 +10,9 @@ export default function PostLoginFrameClaret({ children }) {
                 <NavBarLogin />
             </div>
             {children}
-            <div className="right-side"></div>
+            <div className="right-side">
+                <EventFrame/>
+            </div>
         </div>
     )
 }
