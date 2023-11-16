@@ -2,8 +2,8 @@ import React from "react";
 import NavButtonLogin from './Nav-Button-Logged'
 import '../Styles/Navigation-Login-Container.css'
 import LogoPwr from '../Resources/Logo/logo.png'
-import '../Styles/Nav-Bar-Login.css'
 import FBLogo from '../Resources/Logo/FacebookTransparent.png'
+import IGLogo from '../Resources/Logo/InstagramTransparent.png'
 
 export default function NavBarLogin() {
     return (
@@ -19,8 +19,8 @@ export default function NavBarLogin() {
             <div className="separator"></div>
             <NavButtonLogin className="contact-us" text="Kontakt" pagePath="/contact" />
             <div className="socials">
-                <img src={FBLogo} alt="Facebook" />
-                <p>instagram</p>
+                <img src={FBLogo} className="Facebook" alt="Facebook" />
+                <img src={IGLogo} className="IG" alt = "IG"/>
             </div>
         </div>
     )

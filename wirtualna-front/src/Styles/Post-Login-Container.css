@@ -1,7 +1,7 @@
 .post-login-frame {
     height: 100vh;
     width: 100vw;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 90.1%, #FFF 100%);
+    background: #DEDEDE;
     display: flex;
     flex-direction: column;
 }
