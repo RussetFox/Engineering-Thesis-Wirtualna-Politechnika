@@ -43,7 +43,7 @@ export default function Login() {
           </form>
         </div>
         <div className='login-form-joinus'>
-          <p>Przyłącz się do prężnie rozwijającej się społeczności i <b>#bądźnabieżąco</b></p>
+          <p>Przyłącz się do prężnie rozwijającej się społeczności i #bądźnabieżąco</p>
           <Button text='Dołącz do nas!' color='join-us-button' pagePath = '/register' />
         </div>
       </div>

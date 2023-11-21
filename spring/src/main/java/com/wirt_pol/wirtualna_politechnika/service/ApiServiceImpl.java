@@ -19,7 +19,7 @@ public class ApiServiceImpl implements ApiService {
     }
 
     public List<EventDTO> getEventList() {
-        String numberOfEvents = "5";
+        String numberOfEvents = "3";
         String apiUrl = "https://app.ticketmaster.com/discovery/v2/events.json?size=" +
                 numberOfEvents + "&countryCode=" +
                 mainPageService.retrieveCountryCode() + "&apikey=NAadmUZtZTgog8uApYTESIU2c3lPcldp";

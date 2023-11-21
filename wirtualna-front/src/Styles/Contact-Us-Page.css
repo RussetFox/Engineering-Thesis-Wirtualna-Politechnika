@@ -33,8 +33,7 @@
     text-align: center;
 }
 
-.contact-us-page input,
-textarea {
+.contact-us-page-textarea input {
     border-radius: 25px;
     border: 1px solid #000;
     background: #5D297D;
@@ -61,10 +60,4 @@ textarea {
     font-weight: 700;
     font-size: 50px;
     justify-content: start;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    /* border: 1px solid red; */
 }

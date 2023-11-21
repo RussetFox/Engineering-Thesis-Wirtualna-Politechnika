@@ -43,7 +43,7 @@ export default function Contact_Us_Form() {
                 </label>
                 <label>
                     Wiadomość:
-                    <textarea name="message"
+                    <textarea className = 'contact-us-page-textarea' name="message"
                         id=""
                         onChange={handleChange}
                         value={data.message}
