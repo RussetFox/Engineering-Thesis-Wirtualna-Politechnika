@@ -33,7 +33,7 @@
     text-align: center;
 }
 
-.contact-us-page-textarea input {
+.contact-us-page input {
     border-radius: 25px;
     border: 1px solid #000;
     background: #5D297D;
@@ -50,6 +50,19 @@
 }
 
 .contact-us-page textarea {
+    border-radius: 25px;
+    border: 1px solid #000;
+    background: #5D297D;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    font-size: 25px;
+    margin-top: 10px;
+    width: 100%;
+    color: white;
+    border-radius: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    resize: none;
     padding-bottom: 15%;
 }
 

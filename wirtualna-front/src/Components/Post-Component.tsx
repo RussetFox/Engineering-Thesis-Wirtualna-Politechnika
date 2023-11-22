@@ -9,6 +9,6 @@ export class PostContents{
 
 export default function CreatePostComponent(){
     return(
-        <div>Test</div>
+        <div className='test-post'>Test</div>
     )
 }
