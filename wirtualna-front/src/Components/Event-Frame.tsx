@@ -3,8 +3,6 @@ import { EventDetails } from './Event-Container';
 import '../Styles/Event-Api-Styling.css';
 import { useEffect, useState } from 'react';
 
-const eventArr: EventDetails[] = [];
-
 
 export default function EventFrame () {
     const [events, setEvents] = useState(() => []);
