@@ -1,0 +1,46 @@
+.search-bar-frame {
+    padding: 15px;
+}
+
+.bar-and-button{
+    display: flex;
+    align-items: center;
+    margin-bottom:10px;
+}
+.search-bar-textframe {
+    border-radius: 50px;
+    background: #FFF;
+    padding:10px;
+    border: none;
+    font-size: 20px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    width:13%;
+    text-indent: 15px;
+    transition: width 0.5s ease;
+}
+
+.search-bar-textframe:focus{
+    width: 35%;
+}
+.search-tag-button{
+height: 30px;
+position: inherit;
+margin-left: 15px;
+}
+
+@keyframes tagFound {
+
+    
+}
+.tag-found-bar{
+    offset: 100;
+    margin:5px;
+    padding:5px;
+    border-radius:50px;
+    width:15%;
+    background-color:white;
+    text-align: center;
+    transition: height 0.5s ease;
+    font-size: 20px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}

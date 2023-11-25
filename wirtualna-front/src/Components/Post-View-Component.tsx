@@ -10,7 +10,6 @@ export default function PostViewComponent() {
     const [tagForPosts, setTagForPosts] = useState(() => { return '' });
     useEffect(() => {
         console.log(tagForPosts);
-        console.log("Wysłane z wyższej klasy!!!!");
     }, [tagForPosts])
 
     return (

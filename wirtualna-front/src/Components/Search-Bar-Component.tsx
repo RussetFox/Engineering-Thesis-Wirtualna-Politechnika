@@ -1,35 +1,38 @@
 import React, { useEffect, useState } from "react";
 
+import '../Styles/Search-Bar.css'
+import SearchIcon from "../Resources/Icons/SearchIcon.png"
+
+
 interface SearchBarProps {
     sendTag;
 }
-
 
 const SearchBar: React.FC<SearchBarProps> = ({ sendTag }) => {
     //Declaration of multiple useStates
     //Deklaracje wielu useState'ów
     const [searchBarPhrase, setSearchBarPhrase] = useState(() => { return '' });
-    const [foundTags, setFoundTags] = useState(()=>{return []})
-    const [showTags, setShowTags] = useState(()=>{return false})
+    const [foundTags, setFoundTags] = useState(() => { return [] })
+    const [showTags, setShowTags] = useState(() => { return false })
+
     //Funciton returning tags from backend that shows them in a list
-    const fetchPharses = async (TagPhrase:string) =>{
+    const fetchPharses = async (TagPhrase: string) => {
+        if(TagPhrase[0] === '#')  TagPhrase = TagPhrase.substring(1);
         try {
-            const response = await fetch("http://localhost:8080/content/tag/repeated/"+TagPhrase, {method: 'GET'});
+            const response = await fetch("http://localhost:8080/content/tag/repeated/" + TagPhrase, { method: 'GET' });
             const data = await response.json();
-            console.log(data);
             setFoundTags(data);
             setShowTags(true);
         }
-        catch{
+        catch {
             console.log("Error");
         }
     }
     //Function returning searched tag to parent component to render exact posts
     //Funkcja przekazująca odpowiednie tagi do funkcji rodzica po znalezieniu tagu
     useEffect(() => {
-        if (searchBarPhrase !== '') {
+        if (searchBarPhrase !== '' && searchBarPhrase !== '#') {
             const delayDebounce = setTimeout(() => {
-                console.log(searchBarPhrase)
                 fetchPharses(searchBarPhrase);
             }, 800);
             return () => {
@@ -39,23 +42,27 @@ const SearchBar: React.FC<SearchBarProps> = ({ sendTag }) => {
         };
     }, [searchBarPhrase])
 
-
-
+    function sendTagToParent(tagSent: string) {
+        if(tagSent[0] === '#')  tagSent = tagSent.substring(1);
+        sendTag(tagSent);
+        setSearchBarPhrase('');
+        setShowTags(false);
+    }
 
 
     return (
         <div className='search-bar-frame'>
-            <input className='search-bar-textframe'
+            <div className="bar-and-button">
+            <input id="search-fram" className='search-bar-textframe'
                 placeholder="Wyszukaj tag"
                 onChange={(e) => setSearchBarPhrase(e.target.value)}
             ></input>
-            {showTags && foundTags.map((found, index)=>(
-                <div key={index} className="tag-found-bar">{found}</div>
+             <img src={SearchIcon} alt = "search" className='search-tag-button' onClick={(e) => sendTagToParent(searchBarPhrase)}/>
+             </div>
+            {showTags && foundTags.map((found, index) => (
+                <div key={index} className="tag-found-bar" onClick={(e) => sendTagToParent(found)}>{found}</div>
             ))}
-            <button className='search-tag-button' onClick={(e) => sendTag(searchBarPhrase)}>test</button>
         </div>
     )
 };
 export default SearchBar;
-
-// onChange={(e) => searchSetProps(e.target.value)}
