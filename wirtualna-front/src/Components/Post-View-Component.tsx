@@ -7,17 +7,24 @@ import CreatePost from "./Create-Post-Component";
 
 
 export default function PostViewComponent() {
+    //Handling Tag listing logic
+    //Zarządzanie logiką wyświetlania postów po tagach
     const [tagForPosts, setTagForPosts] = useState(() => { return '' });
     useEffect(() => {
         console.log(tagForPosts);
     }, [tagForPosts])
 
+    //Handling posting new content and listing it to existing posts
+    //Zarządzanie logiką dodawania nowych postów i wyświetlaniu ich wraz z nowymi postami
+    const [contentCreateText, setContentCreateText] = useState(()=> {return ''})
+    useEffect(()=>{
+        console.log(contentCreateText)
+    },[contentCreateText])
+
     return (
         <div className="post-view-component">
             <SearchBar sendTag={setTagForPosts} />
-            <div className="Create-Post-Frame">
-                <textarea className="Create-Post-Text-Area" placeholder="What's on your mind?"></textarea>
-            </div>
+            <CreatePost contentText={setContentCreateText}/>
             <div className="post-frame">
                 <Post />
                 <Post />

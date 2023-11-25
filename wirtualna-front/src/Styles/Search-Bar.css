@@ -28,10 +28,6 @@ position: inherit;
 margin-left: 15px;
 }
 
-@keyframes tagFound {
-
-    
-}
 .tag-found-bar{
     offset: 100;
     margin:5px;
