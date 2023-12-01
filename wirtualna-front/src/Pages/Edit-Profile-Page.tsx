@@ -1,11 +1,13 @@
 import React from 'react';
+import PostLoginLayout from '../Layout/Post-Login-Layout';
 
-const AboutUsPage: React.FC = () => {
+const EditProfilePage: React.FC = () => {
     return (
-        <div>
-            <h1>Edit Profile Here</h1>
-        </div>
+        <PostLoginLayout>
+            <h1>Edit profile</h1>
+        </PostLoginLayout>
     );
 };
 
-export default AboutUsPage;
+export default EditProfilePage;
+

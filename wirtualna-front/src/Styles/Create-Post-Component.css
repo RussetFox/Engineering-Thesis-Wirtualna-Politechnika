@@ -1,3 +1,51 @@
-.Create-Post-Text-Area{
-    color: black;
+.create-post-frame {
+    height: 20%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.create-post-frame .create-post-frame:focus{
+    height: 90%;
+}
+
+.create-post-text-area {
+    border-radius: 30px;
+    background: #FFF;
+    padding: 10px;
+    border: none;
+    font-size: 20px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    width: 95%;
+    height: 95%;
+    text-align: start;
+    font-size: 500;
+    resize: none;
+    text-indent: 15px;
+    transition: 0.5s ease;
+}
+
+
+.create-post-button-frame{
+    height: 50%;
+    margin-top:1%;
+    display: flex;
+    align-items: right;
+    justify-content: right;
+}
+
+.create-post-submit-button{
+    color: #FFF;
+    background-color: #dfb493;
+    border-radius: 30px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    text-align: center;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 25px;
+    height:100%;
+    width: 15%;
+}
+
+.create-post-submit-button:enabled{
+    background-color: #E58B47;
 }
