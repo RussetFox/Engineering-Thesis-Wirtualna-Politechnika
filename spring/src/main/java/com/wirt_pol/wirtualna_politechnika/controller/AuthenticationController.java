@@ -30,7 +30,6 @@ public class AuthenticationController {
         jwtCookie.setSecure(false);
         jwtCookie.setPath("/");
         response.addCookie(jwtCookie);
-        System.out.println("H3h3h3 cookie: " + jwtCookie.getValue());
         return ResponseEntity.ok(new AuthenticationResponse("User registered and authenticated"));
     }
 
@@ -43,7 +42,8 @@ public class AuthenticationController {
         // Ustawia JWT jako Cookie
         Cookie jwtCookie = new Cookie("Authorization", authResponse.getToken());
         jwtCookie.setHttpOnly(true);
-        jwtCookie.setSecure(true); // Set to true if using HTTPS
+        jwtCookie.setSecure(false);
+        jwtCookie.setPath("/");
 
         response.addCookie(jwtCookie);
 

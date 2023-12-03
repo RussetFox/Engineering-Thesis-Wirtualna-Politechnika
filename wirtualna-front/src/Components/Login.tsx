@@ -2,13 +2,35 @@ import React, { useState } from 'react';
 import Button from "./Button"
 import '../Styles/Login-Page.css';
 import '../Styles/Button.css';
+import { useNavigate } from 'react-router-dom';
 export default function Login() {
+  const nav = useNavigate();
   const [login, setLogin] = useState(() => { return '' });
   const [password, setPassword] = useState(() => { return '' });
 
-  const handleLogin = (event: any) => {
-    event.preventDefault();
-    console.log('Zalogowano:', login, password);
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const sendData = {
+        userName: login,
+        password: password
+      };
+
+      await fetch("http://localhost:8080/user/auth/authenticate", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify(sendData)
+      })
+        .then(response => response.json())
+        .then(()=>{
+          nav("/contents");
+        })
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (

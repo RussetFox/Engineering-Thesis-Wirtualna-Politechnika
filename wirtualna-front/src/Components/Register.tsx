@@ -3,7 +3,6 @@ import '../Styles/Register-Page.css'
 import Button from './Button'
 import { Link, useNavigate } from 'react-router-dom';
 
-//Zamiast ścieżek na sztywno to napisać ścieżki routera
 
 export default function Register() {
   const [login, setName] = useState('');
@@ -35,8 +34,7 @@ export default function Register() {
         body: JSON.stringify(sendData)
       })
         .then(response => response.json())
-        .then(data => {
-          console.log('Success:', data);
+        .then(()=>{
           nav("/contents");
         })
     } catch (error) {
