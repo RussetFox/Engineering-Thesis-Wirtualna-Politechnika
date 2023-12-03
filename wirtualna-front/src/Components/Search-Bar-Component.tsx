@@ -20,7 +20,11 @@ const SearchBar: React.FC<SearchBarProps> = ({ sendTag }) => {
     const fetchPharses = async (TagPhrase: string) => {
         if (TagPhrase[0] === '#') TagPhrase = TagPhrase.substring(1);
         try {
-            const response = await fetch("http://localhost:8080/content/tag/repeated/" + TagPhrase, { method: 'GET' });
+            const response = await fetch("http://localhost:8080/content/tag/repeated/" + TagPhrase,
+                {
+                    method: 'GET',
+                    credentials: 'include'
+                });
             const data = await response.json();
             setFoundTags(data);
             setShowTags(true);
@@ -30,8 +34,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ sendTag }) => {
         }
     }
 
-//UseEffect checking if input field has been changed and if field isn't empty or contains only # calls search tags function
-//UseEffect odpowiedzialny za sprawdzenie, czy pole input zostało zmienione i jeżeli nie jest puste lub nie zawiera tylko znaku # używa funkcji znajdującej tagi
+    //UseEffect checking if input field has been changed and if field isn't empty or contains only # calls search tags function
+    //UseEffect odpowiedzialny za sprawdzenie, czy pole input zostało zmienione i jeżeli nie jest puste lub nie zawiera tylko znaku # używa funkcji znajdującej tagi
     useEffect(() => {
         if (searchBarPhrase !== '' && searchBarPhrase !== '#') {
             const delayDebounce = setTimeout(() => {
@@ -45,8 +49,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ sendTag }) => {
     }, [searchBarPhrase])
 
 
-//Function returning searched tag to parent component to render exact posts
-//Funkcja przekazująca odpowiednie tagi do funkcji rodzica po znalezieniu tagu
+    //Function returning searched tag to parent component to render exact posts
+    //Funkcja przekazująca odpowiednie tagi do funkcji rodzica po znalezieniu tagu
     function sendTagToParent(tagSent: string) {
         if (tagSent[0] === '#') tagSent = tagSent.substring(1);
         sendTag(tagSent);
@@ -66,7 +70,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ sendTag }) => {
                 <img src={SearchIcon} alt="search" className='search-tag-button' onClick={(e) => sendTagToParent(searchBarPhrase)} />
             </div>
 
-{/*Lists all tags found in BackEnd as separate divs which send data to parent after clicking
+            {/*Lists all tags found in BackEnd as separate divs which send data to parent after clicking
 Listuje wszystkie znalezione tagi, po czym wysyła je do rodzica po kliknięciu na jeden z nich*/}
 
             {showTags && foundTags.map((found, index) => (

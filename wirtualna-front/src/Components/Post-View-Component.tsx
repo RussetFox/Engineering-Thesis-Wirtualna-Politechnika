@@ -22,6 +22,7 @@ interface postData {
 async function postToBack(data: postData) {
     const response = await fetch('http://localhost:8080/content', {
         method: 'POST',
+        credentials:'include',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -32,7 +33,7 @@ async function postToBack(data: postData) {
         throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    return await response.json(); // Or handle the response as needed
+    return await response.json();
 }
 
 export default function PostViewComponent() {
