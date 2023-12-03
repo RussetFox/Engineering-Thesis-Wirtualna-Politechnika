@@ -45,8 +45,8 @@ export default function EventFrame() {
     <div className='event-frame'>
       <button className='event-frame-button'onClick={handleLogout}>Wyloguj się</button>
       <h2>Wydarzenia w Twojej okolicy!</h2>
-      {events.slice(0, 3).map((eventDetail) => (
-        <EventContainer eventDetails={eventDetail} />
+      {events.slice(0, 3).map((eventDetail, index) => (
+        <EventContainer key = {index} eventDetails={eventDetail} />
       ))}
     </div>
   )

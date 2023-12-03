@@ -23,9 +23,9 @@ interface EventFrameProps {
 const EventFrame: React.FC<EventFrameProps> = ({ eventDetails }) => {
     return (
         <div className="event-container">
-            <text className="event-name">{eventDetails.eventName}</text>
+            <div className="event-name">{eventDetails.eventName}</div>
             <img className="event-image" src={eventDetails.eventImageURL} alt="Event" />
-            <text className="event-date-time">{eventDetails.eventStartDate}</text>
+            <div className="event-date-time">{eventDetails.eventStartDate}</div>
         </div>
     )
 
