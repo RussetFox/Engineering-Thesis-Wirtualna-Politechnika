@@ -61,25 +61,20 @@ export default function PostViewComponent() {
 
     //Handling posting new content and listing it to existing posts
     //Zarządzanie logiką dodawania nowych postów i wyświetlaniu ich wraz z nowymi postami
-    const [contentCreateText, setContentCreateText] = useState(() => { return '' })
+    const [contentData, setContentData] = useState<postData>(()=>{return {title: '', description:'', tags:[]}})
 
     useEffect(() => {
-        if (contentCreateText !== '') {
-            const pData: postData = {
-                title: '',
-                description: contentCreateText,
-                tags: findHashtagWords(contentCreateText)
-            };
-            postToBack(pData);
-            setContentCreateText('');
+        if(contentData.description !== ''){
+        postToBack(contentData);
+        setContentData({title:'', description:'',tags:[]});
         }
-    }, [contentCreateText])
+    }, [contentData])
 
 
     return (
         <div className="post-view-component">
             <SearchBar sendTag={setTagForPosts} />
-            <CreatePost contentText={setContentCreateText} />
+            <CreatePost contentData={setContentData} />
             <div className="post-frame">
                 <Post />
                 <Post />

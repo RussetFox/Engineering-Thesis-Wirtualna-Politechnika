@@ -45,7 +45,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             }
         }
         if (jwtToken == "") {
-            System.out.println("Nie działa :///");
             filterChain.doFilter(request, response);
             return;
         }
