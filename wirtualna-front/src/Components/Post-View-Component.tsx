@@ -6,18 +6,6 @@ import Post from "./Post-Component";
 import CreatePost from "./Create-Post-Component";
 
 
-
-//_____________Functions to handle backend requests_____________________
-
-function findHashtagWords(inputStr: string): string[] {
-    const regex = /(?<=#)[a-zA-Z0-9_ąćęłńóśżź]+/g;
-
-    const matchedWords = inputStr.match(regex);
-    if (!matchedWords) return [];
-    return matchedWords;
-}
-
-
 //Posting content to backend
 
 interface postData {
@@ -29,7 +17,7 @@ interface postData {
 async function postToBack(data: postData) {
     const response = await fetch('http://localhost:8080/content', {
         method: 'POST',
-        credentials:'include',
+        credentials: 'include',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -45,6 +33,7 @@ async function postToBack(data: postData) {
 
 
 //Getting content from backend
+
 // async function getFromBack(data)
 
 
@@ -61,12 +50,12 @@ export default function PostViewComponent() {
 
     //Handling posting new content and listing it to existing posts
     //Zarządzanie logiką dodawania nowych postów i wyświetlaniu ich wraz z nowymi postami
-    const [contentData, setContentData] = useState<postData>(()=>{return {title: '', description:'', tags:[]}})
+    const [contentData, setContentData] = useState<postData>(() => { return { title: '', description: '', tags: [] } })
 
     useEffect(() => {
-        if(contentData.description !== ''){
-        postToBack(contentData);
-        setContentData({title:'', description:'',tags:[]});
+        if (contentData.description !== '') {
+            postToBack(contentData);
+            setContentData({ title: '', description: '', tags: [] });
         }
     }, [contentData])
 
