@@ -5,6 +5,10 @@ import SearchBar from "./Search-Bar-Component";
 import Post from "./Post-Component";
 import CreatePost from "./Create-Post-Component";
 
+
+
+//_____________Functions to handle backend requests_____________________
+
 function findHashtagWords(inputStr: string): string[] {
     const regex = /(?<=#)[a-zA-Z0-9_ąćęłńóśżź]+/g;
 
@@ -12,6 +16,9 @@ function findHashtagWords(inputStr: string): string[] {
     if (!matchedWords) return [];
     return matchedWords;
 }
+
+
+//Posting content to backend
 
 interface postData {
     title: string;
@@ -35,6 +42,13 @@ async function postToBack(data: postData) {
 
     return await response.json();
 }
+
+
+//Getting content from backend
+// async function getFromBack(data)
+
+
+//_____________Post view component logic_______________________________
 
 export default function PostViewComponent() {
 
