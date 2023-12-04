@@ -14,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ContentDTO {
+    private Long contentId;
     private String description;
     private LocalDateTime creationTime;
     private List<String> tags;
@@ -21,6 +22,7 @@ public class ContentDTO {
 
     public static ContentDTO fromContent(Content content){
         ContentDTO dto = new ContentDTO();
+        dto.setContentId(content.getId());
         dto.setDescription(content.getDescription());
         dto.setCreationTime(content.getCreationTime());
         dto.setTags(content.getTags());

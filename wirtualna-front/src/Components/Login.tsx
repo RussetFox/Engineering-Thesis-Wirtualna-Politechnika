@@ -25,8 +25,11 @@ export default function Login() {
         body: JSON.stringify(sendData)
       })
         .then(response => response.json())
-        .then(()=>{
-          nav("/contents");
+        .then((data) => {
+          if (data.token === "User authenticated")
+            nav("/contents");
+          else {alert("Niepoprawne dane logowania lub użytkownik nie istnieje");
+          setPassword('')}
         })
     } catch (error) {
       console.error('Error:', error);
@@ -66,7 +69,7 @@ export default function Login() {
         </div>
         <div className='login-form-joinus'>
           <p>Przyłącz się do prężnie rozwijającej się społeczności i #bądźnabieżąco</p>
-          <Button text='Dołącz do nas!' color='join-us-button' pagePath = '/register' />
+          <Button text='Dołącz do nas!' color='join-us-button' pagePath='/register' />
         </div>
       </div>
     </div>

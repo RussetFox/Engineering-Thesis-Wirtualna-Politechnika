@@ -4,15 +4,9 @@ import '../Styles/Create-Post-Component.css'
 import SearchBar from "./Search-Bar-Component";
 import Post from "./Post-Component";
 import CreatePost from "./Create-Post-Component";
-
-
+import { postData } from "./Create-Post-Component"
+import { PostContentsProps } from "./Post-Component"
 //Posting content to backend
-
-interface postData {
-    title: string;
-    description: string;
-    tags: string[];
-}
 
 async function postToBack(data: postData) {
     const response = await fetch('http://localhost:8080/content', {
@@ -34,13 +28,26 @@ async function postToBack(data: postData) {
 
 //Getting content from backend
 
+
+async function getFromBack(pageNumber: number) {
+    try {
+        const response = await fetch('http://localhost:8080/content/page/' + pageNumber, {
+            method: 'GET',
+            credentials: 'include'
+        })
+        const data = await response.json();
+        return data;
+    }
+    catch {
+        throw new Error("Nie udało się pobrać postów");
+    }
+}
 // async function getFromBack(data)
 
 
 //_____________Post view component logic_______________________________
 
 export default function PostViewComponent() {
-
 
     //Handling Tag listing logic
     //Zarządzanie logiką wyświetlania postów po tagach
@@ -50,16 +57,31 @@ export default function PostViewComponent() {
 
     //Handling posting new content and listing it to existing posts
     //Zarządzanie logiką dodawania nowych postów i wyświetlaniu ich wraz z nowymi postami
-    const [contentData, setContentData] = useState<postData>(() => { return { title: '', description: '', tags: [] } })
-
+    const [contentData, setContentData] = useState<postData>(() => { return { title: '', description: '', tags: [] } });
+    const [newPostSubmitted, setNewPostSubmitted] = useState(() => { return false });
+    const [contentPage, setContentPage] = useState(() => { return 1 })
+    const [postContents, setPostContents] = useState<PostContentsProps[]>(() => { return [] });
     useEffect(() => {
         if (contentData.description !== '') {
-            postToBack(contentData);
-            setContentData({ title: '', description: '', tags: [] });
+            postToBack(contentData)
+                .then(() => {
+                    setContentData({ title: '', description: '', tags: [] });
+                    setNewPostSubmitted(true);
+                })
         }
     }, [contentData])
+    useEffect(() => {
+        if (newPostSubmitted) {
+            getFromBack(1);
+            setNewPostSubmitted(false);
+        }
+    }, [newPostSubmitted])
 
-
+    useEffect(() => {
+        getFromBack(contentPage)
+        .then((data)=>setPostContents(data));
+        console.log(postContents);
+    },[contentPage])
     return (
         <div className="post-view-component">
             <SearchBar sendTag={setTagForPosts} />

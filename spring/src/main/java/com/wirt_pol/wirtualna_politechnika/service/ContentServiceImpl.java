@@ -44,7 +44,7 @@ public class ContentServiceImpl implements ContentService {
         List<Content> contentList = contentRepository.findAll(pageable).getContent();
         List<ContentDTO> dtoList = new ArrayList<>();
         for (Content content : contentList) {
-            ContentDTO dto = new ContentDTO(content.getDescription(),
+            ContentDTO dto = new ContentDTO(content.getId(), content.getDescription(),
                     content.getCreationTime(), content.getTags(), content.getAuthor().getUsername());
             dtoList.add(dto);
         }
@@ -56,7 +56,7 @@ public class ContentServiceImpl implements ContentService {
         List<Content> contentList = (List<Content>) contentRepository.findAll();
         List<ContentDTO> dtoList = new ArrayList<>();
         for (Content content : contentList) {
-            ContentDTO dto = new ContentDTO(content.getDescription(),
+            ContentDTO dto = new ContentDTO(content.getId(), content.getDescription(),
                     content.getCreationTime(), content.getTags(), content.getAuthor().getUsername());
             dtoList.add(dto);
         }

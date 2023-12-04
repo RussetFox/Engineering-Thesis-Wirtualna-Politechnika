@@ -1,8 +1,9 @@
+import { wait } from '@testing-library/user-event/dist/utils';
 import '../Styles/Create-Post-Component.css';
 import React, { SetStateAction } from 'react';
 import { useState } from 'react';
 
-interface postData {
+export interface postData {
     title: string;
     description: string;
     tags: string[];
