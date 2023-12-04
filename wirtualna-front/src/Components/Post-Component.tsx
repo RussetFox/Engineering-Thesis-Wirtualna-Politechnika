@@ -1,11 +1,11 @@
 import React from 'react';
 
 
-class PostContents {
+export class PostContents {
     contentId: number;
     description: string;
     creationTime: Date;
-    tags: string[];
+    tags?: string[];
     author: string;
 
     constructor(
@@ -27,8 +27,10 @@ export interface PostContentsProps {
     postContents: PostContents;
 }
 
-export default function CreatePostComponent() {
+const SinglePostComponent:React.FC<PostContentsProps> = ({postContents}) => {
+    
     return (
         <div className='test-post'>Test</div>
     )
-}
+};
+export default SinglePostComponent

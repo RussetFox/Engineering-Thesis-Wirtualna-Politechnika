@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import '../Styles/Post-View-Component.css'
 import '../Styles/Create-Post-Component.css'
 import SearchBar from "./Search-Bar-Component";
-import Post from "./Post-Component";
+import PostFrame from "./Post-Frame";
+import { PostFrameProps } from "./Post-Frame";
 import CreatePost from "./Create-Post-Component";
 import { postData } from "./Create-Post-Component"
-import { PostContentsProps } from "./Post-Component"
+import { PostContents } from "./Post-Component";
 //Posting content to backend
 
 async function postToBack(data: postData) {
@@ -36,6 +37,7 @@ async function getFromBack(pageNumber: number) {
             credentials: 'include'
         })
         const data = await response.json();
+
         return data;
     }
     catch {
@@ -58,45 +60,34 @@ export default function PostViewComponent() {
     //Handling posting new content and listing it to existing posts
     //Zarządzanie logiką dodawania nowych postów i wyświetlaniu ich wraz z nowymi postami
     const [contentData, setContentData] = useState<postData>(() => { return { title: '', description: '', tags: [] } });
-    const [newPostSubmitted, setNewPostSubmitted] = useState(() => { return false });
     const [contentPage, setContentPage] = useState(() => { return 1 })
-    const [postContents, setPostContents] = useState<PostContentsProps[]>(() => { return [] });
+    const [postContents, setPostContents] = useState<PostFrameProps[]>(() => { return [] });
     useEffect(() => {
         if (contentData.description !== '') {
             postToBack(contentData)
                 .then(() => {
                     setContentData({ title: '', description: '', tags: [] });
-                    setNewPostSubmitted(true);
                 })
+                .then(() => getFromBack(1)
+                    .then((data) => setPostContents(data)))
         }
     }, [contentData])
-    useEffect(() => {
-        if (newPostSubmitted) {
-            getFromBack(1);
-            setNewPostSubmitted(false);
-        }
-    }, [newPostSubmitted])
 
     useEffect(() => {
         getFromBack(contentPage)
-        .then((data)=>setPostContents(data));
+            .then((data) => { setPostContents((prevData)=>[...prevData,...data]) });
+        console.log(contentPage);
+    }, [contentPage])
+
+    useEffect(() => {
         console.log(postContents);
-    },[contentPage])
+    }, [postContents])
     return (
         <div className="post-view-component">
             <SearchBar sendTag={setTagForPosts} />
             <CreatePost contentData={setContentData} />
+            <button onClick={(e)=>{setContentPage(prevPage => prevPage+1)}}>Testowansko</button>
             <div className="post-frame">
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
             </div>
         </div>
     )
