@@ -6,7 +6,7 @@ import PostFrame from "./Post-Frame";
 import { PostFrameProps } from "./Post-Frame";
 import CreatePost from "./Create-Post-Component";
 import { postData } from "./Create-Post-Component"
-import { PostContents } from "./Post-Component";
+import { PostContents} from "./Post-Component";
 //Posting content to backend
 
 async function postToBack(data: postData) {
@@ -61,7 +61,7 @@ export default function PostViewComponent() {
     //Zarządzanie logiką dodawania nowych postów i wyświetlaniu ich wraz z nowymi postami
     const [contentData, setContentData] = useState<postData>(() => { return { title: '', description: '', tags: [] } });
     const [contentPage, setContentPage] = useState(() => { return 1 })
-    const [postContents, setPostContents] = useState<PostFrameProps[]>(() => { return [] });
+    const [postContents, setPostContents] = useState<PostContents[]>(() => { return [] });
     useEffect(() => {
         if (contentData.description !== '') {
             postToBack(contentData)
@@ -75,20 +75,15 @@ export default function PostViewComponent() {
 
     useEffect(() => {
         getFromBack(contentPage)
-            .then((data) => { setPostContents((prevData)=>[...prevData,...data]) });
+            .then((data) => { if (data && Array.isArray(data)){setPostContents((prevData) => [...prevData, ...data]) }});
         console.log(contentPage);
     }, [contentPage])
-
-    useEffect(() => {
-        console.log(postContents);
-    }, [postContents])
     return (
         <div className="post-view-component">
             <SearchBar sendTag={setTagForPosts} />
             <CreatePost contentData={setContentData} />
-            <button onClick={(e)=>{setContentPage(prevPage => prevPage+1)}}>Testowansko</button>
-            <div className="post-frame">
-            </div>
+            <button onClick={(e) => { setContentPage(prevPage => prevPage + 1) }}>Testowansko</button>
+            <PostFrame posts={postContents} />
         </div>
     )
 }

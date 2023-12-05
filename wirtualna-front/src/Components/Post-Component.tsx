@@ -27,10 +27,13 @@ export interface PostContentsProps {
     postContents: PostContents;
 }
 
-const SinglePostComponent:React.FC<PostContentsProps> = ({postContents}) => {
-    
+const SinglePostComponent: React.FC<PostContentsProps> = ({ postContents }) => {
+
     return (
-        <div className='test-post'>Test</div>
+    <div>
+        <div>{postContents.description}</div>
+    </div>
+
     )
 };
 export default SinglePostComponent

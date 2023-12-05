@@ -28,7 +28,7 @@ public class AuthenticationController {
         Cookie jwtCookie = new Cookie("Authorization", authResponse.getToken());
         jwtCookie.setHttpOnly(true);
         jwtCookie.setSecure(false);
-        jwtCookie.setMaxAge(1800000);
+        jwtCookie.setMaxAge(1800);
         jwtCookie.setPath("/");
         response.addCookie(jwtCookie);
         return ResponseEntity.ok(new AuthenticationResponse("User registered and authenticated"));
@@ -45,7 +45,7 @@ public class AuthenticationController {
         jwtCookie.setHttpOnly(true);
         jwtCookie.setSecure(false);
         jwtCookie.setPath("/");
-        jwtCookie.setMaxAge(1800000);
+        jwtCookie.setMaxAge(1800);
         response.addCookie(jwtCookie);
 
         return ResponseEntity.ok(new AuthenticationResponse("User authenticated"));

@@ -1,13 +1,22 @@
-import { PostContentsProps} from "./Post-Component"
-import {PostContents} from "./Post-Component"
+import { PostContents } from "./Post-Component"
+import SinglePost from "./Post-Component"
 
-export interface PostFrameProps{
-    posts:PostContents[];
+export interface PostFrameProps {
+    posts: PostContents[];
 }
 
 
-export default function PostFrame({posts} : PostFrameProps){
-    return(
-        <div>Test</div>
+
+const PostFrame: React.FC<PostFrameProps> = ({ posts }) => {
+
+    return (<div className="post-frame">
+        {
+            posts?.length > 0 && posts.map((post, index) => (
+                <SinglePost key={index} postContents={post} />
+            ))
+        }
+    </div>
+
     )
 }
+export default PostFrame;
