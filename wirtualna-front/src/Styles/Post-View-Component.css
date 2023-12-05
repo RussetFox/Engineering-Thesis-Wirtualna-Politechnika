@@ -6,11 +6,7 @@
     justify-self: center;
     align-self: center;
     align-items: center;
-}
-.test-post{
-    background-color: green;
-    padding: 100px;
-    border: 1px solid black;
+    justify-content: center;
 }
 
 

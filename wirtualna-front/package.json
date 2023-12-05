@@ -43,6 +43,8 @@
     ]
   },
   "devDependencies": {
-    "@types/react": "^18.2.33"
+    "@types/react": "^18.2.33",
+    "file-loader": "^6.2.0",
+    "svg-react-loader": "^0.4.6"
   }
 }

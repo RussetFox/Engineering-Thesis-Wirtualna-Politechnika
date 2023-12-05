@@ -1,5 +1,6 @@
 import { PostContents } from "./Post-Component"
 import SinglePost from "./Post-Component"
+import '../Styles/Posts-Display-Styling.css'
 
 export interface PostFrameProps {
     posts: PostContents[];
