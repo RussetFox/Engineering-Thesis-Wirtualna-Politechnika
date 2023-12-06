@@ -6,7 +6,8 @@ import PostFrame from "./Post-Frame";
 import { PostFrameProps } from "./Post-Frame";
 import CreatePost from "./Create-Post-Component";
 import { postData } from "./Create-Post-Component"
-import { PostContents} from "./Post-Component";
+import { PostContents } from "./Post-Component";
+import { get } from "http";
 //Posting content to backend
 
 async function postToBack(data: postData) {
@@ -44,6 +45,21 @@ async function getFromBack(pageNumber: number) {
         throw new Error("Nie udało się pobrać postów");
     }
 }
+
+async function getFromBackByTag(tag: string) {
+    try {
+        const response = await fetch('http://localhost:8080/content/tag/' + tag, {
+            method: 'GET',
+            credentials: 'include'
+        })
+        const data = await response.json();
+        return data;
+    }
+    catch {
+        throw new Error("Nie udało się pobrać postów po danym tagu");
+    }
+
+}
 // async function getFromBack(data)
 
 
@@ -55,6 +71,9 @@ export default function PostViewComponent() {
     //Zarządzanie logiką wyświetlania postów po tagach
     const [tagForPosts, setTagForPosts] = useState(() => { return '' });
     useEffect(() => {
+        if(tagForPosts !== '')
+        getFromBackByTag(tagForPosts)
+            .then((data) => setPostContents(data));
     }, [tagForPosts])
 
     //Handling posting new content and listing it to existing posts
@@ -75,9 +94,17 @@ export default function PostViewComponent() {
 
     useEffect(() => {
         getFromBack(contentPage)
-            .then((data) => { if (data && Array.isArray(data)){setPostContents((prevData) => [...prevData, ...data]) }});
-        console.log(contentPage);
-    }, [contentPage])
+            .then((data) => {
+                if (Array.isArray(data)) {
+                    setPostContents((prevData) => {
+                        if (Array.isArray(prevData))
+                            return [...prevData, ...data];
+                        else return [...data];
+                    });
+                }
+                console.log(contentPage);
+            });
+    }, [contentPage]);
     return (
         <div className="post-view-component">
             <SearchBar sendTag={setTagForPosts} />
