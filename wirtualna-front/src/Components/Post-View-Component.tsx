@@ -6,6 +6,7 @@ import PostFrame from "./Post-Frame";
 import CreatePost from "./Create-Post-Component";
 import { postData } from "./Create-Post-Component"
 import { PostContents } from "./Post-Component";
+import { wait } from "@testing-library/user-event/dist/utils";
 //Posting content to backend
 
 async function postToBack(data: postData) {
@@ -77,10 +78,32 @@ async function deleteFromBack(contentId: number) {
     }
 }
 
+//Fetching number of pages from backend
+async function getNumberOfPages(setPages: React.Dispatch<React.SetStateAction<number | undefined>>) {
+    try {
+        const response = await fetch('http://localhost:8080/content/numberOfPages', {
+            method: 'GET',
+            credentials: 'include'
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setPages(parseInt(data));
+
+    } catch {
+        throw new Error("Nie udało się pobrać liczby stron");
+    }
+}
 
 //_____________Post view component logic_______________________________
 
 export default function PostViewComponent() {
+
+    const [numberOfPages, setNumberOfPages] = useState<number | undefined>(undefined);
+    getNumberOfPages(setNumberOfPages);
 
     //Handling Tag listing logic
     //Zarządzanie logiką wyświetlania postów po tagach
@@ -96,6 +119,18 @@ export default function PostViewComponent() {
     const [contentData, setContentData] = useState<postData>(() => { return { title: '', description: '', tags: [] } });
     const [contentPage, setContentPage] = useState(() => { return 1 })
     const [postContents, setPostContents] = useState<PostContents[]>(() => { return [] });
+    const [scrollEnabled, setScrollEnabled] = useState(() => { return true });
+
+    const handleScroll = (e) => {
+        
+        const bottom = e.target.scrollHeight - e.target.scrollTop - 50 < e.target.clientHeight;
+        if (bottom && numberOfPages !== undefined && contentPage < numberOfPages && scrollEnabled) {
+            setContentPage(prevContentPage => prevContentPage + 1);
+            console.log(contentPage);
+
+        }
+    };
+
     useEffect(() => {
         if (contentData.description !== '') {
             postToBack(contentData)
@@ -114,6 +149,7 @@ export default function PostViewComponent() {
     }
 
     useEffect(() => {
+        setScrollEnabled(false);
         getFromBack(contentPage)
             .then((data) => {
                 if (Array.isArray(data)) {
@@ -123,11 +159,12 @@ export default function PostViewComponent() {
                         else return [...data];
                     });
                 }
-                console.log(contentPage);
-            });
+            })
+            .then(() => setScrollEnabled(true));
     }, [contentPage]);
+
     return (
-        <div className="post-view-component">
+        <div className="post-view-component" onScroll={(e) => { handleScroll(e) }}>
             <SearchBar sendTag={setTagForPosts} />
             <CreatePost contentData={setContentData} />
             <button onClick={(e) => { setContentPage(prevPage => prevPage + 1) }}>Testowansko</button>

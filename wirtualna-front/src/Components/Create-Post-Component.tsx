@@ -1,4 +1,3 @@
-import { wait } from '@testing-library/user-event/dist/utils';
 import '../Styles/Create-Post-Component.css';
 import React, { SetStateAction } from 'react';
 import { useState } from 'react';
@@ -28,7 +27,7 @@ const CreatePostComponent: React.FC<CreatePostProps> = ({ contentData }) => {
     const handleInputChange = (e) => {
         const inputFieldValue = e.target.value;
         setInputValue(inputFieldValue);
-        setIsButtonActive(inputFieldValue.length >= 50);
+        setIsButtonActive(inputFieldValue.length >= 1);
     }
 
     function handlePostSubmit() {

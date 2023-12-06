@@ -24,4 +24,6 @@ public interface ContentService {
     List<String> getMostRepeatingTagsWithPrefix(String prefix);
 
     void deleteContentById(Long contentId);
+    
+    int fetchNumberOfPages();
 }

@@ -125,4 +125,11 @@ public class ContentServiceImpl implements ContentService {
 
         return mostRepeatingTags;
     }
+
+    @Override
+    public int fetchNumberOfPages(){
+        int pageSize = 15;
+        long totalElements = contentRepository.count();
+        return (int) Math.ceil((double) totalElements / pageSize);
+    }
 }

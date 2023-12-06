@@ -7,6 +7,9 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @CrossOrigin
 @RestController
@@ -48,9 +51,15 @@ public class ContentController {
     public String editContent(@Valid @RequestBody Content content, @PathVariable Long id ){
         return contentService.editContent(content, id);
     }
-    @DeleteMapping("/user/{id}")
+    @DeleteMapping("/content/{id}")
     public void deleteContentById(@PathVariable("id") Long contentId){
         contentService.deleteContentById(contentId);
     }
+
+    @GetMapping("/content/numberOfPages")
+    public int getCountOfPages() {
+        return contentService.fetchNumberOfPages();
+    }
+    
 
 }
