@@ -2,6 +2,8 @@ import React from 'react';
 import moment from 'moment';
 import '../Styles/Posts-Display-Styling.css';
 import Hear from '../Resources/Icons/BlancPic.jpg'
+import DeleteIcon from '../Resources/Icons/Trash-Icon.png'
+
 export class PostContents {
     contentId: number;
     description: string;
@@ -44,7 +46,7 @@ const SinglePostComponent: React.FC<PostContentsProps> = ({ postContents, onDele
                 <div className='post-description'>{postContents.description}</div>
             </div>
             <div className='content-buttons-container'>
-                <button onClick={() => onDelete(postContents.contentId)}>Delete</button>
+                <img className = 'delete-button' src= {DeleteIcon} onClick={() => onDelete(postContents.contentId)}/>
             </div>
         </div>
 

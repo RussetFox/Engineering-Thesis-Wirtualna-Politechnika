@@ -130,6 +130,9 @@ public class ContentServiceImpl implements ContentService {
     public int fetchNumberOfPages(){
         int pageSize = 15;
         long totalElements = contentRepository.count();
+        if(totalElements == 0){
+            return 1;
+        }
         return (int) Math.ceil((double) totalElements / pageSize);
     }
 }

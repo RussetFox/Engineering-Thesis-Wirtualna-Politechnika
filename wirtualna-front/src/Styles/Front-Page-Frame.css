@@ -40,7 +40,7 @@
 
 .front-page-frame-login {
     display: flex;
-    width: 60%;
+    width: 70%;
     height: 50%;
     grid-row: 2/3;
     grid-column: 2 / 3;
@@ -49,7 +49,7 @@
 .front-page-frame-register {
     grid-row: 2/3;
     display: flex;
-    width: 60%;
+    width: 70%;
     height: 50%;
     grid-column: 3 /4;
 }

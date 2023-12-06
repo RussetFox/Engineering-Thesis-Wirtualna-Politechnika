@@ -59,12 +59,15 @@
 }
 
 .passed-date {
-    font-weight: 700;
+    font-weight: 600;
+    padding: 5px;
+    color: #813CAC;
     margin-left: 1%;
 }
 
 .post-description {
     height: 80%;
+    font-weight: 500;
     margin-left:1%;
     font-size: 20px;
     margin-top: 1px;
@@ -75,4 +78,11 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+}
+
+.delete-button{
+    width: 35px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
 }

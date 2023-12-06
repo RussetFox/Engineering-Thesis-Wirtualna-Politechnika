@@ -43,10 +43,10 @@ export default function Login() {
           <h1>Zaloguj się</h1>
           <form onSubmit={handleLogin}>
             <div>
-              <label>Nazwa uzytkownika / E-mail:</label>
+              <label>Nazwa uzytkownika</label>
               <input
                 type="login"
-                placeholder="Wprowadź nazwę użytkownika lub e-mail"
+                placeholder="Wprowadź nazwę użytkownika"
                 value={login}
                 max={16}
                 onChange={(e) => setLogin(e.target.value)}

@@ -69,7 +69,7 @@ async function deleteFromBack(contentId: number) {
             credentials: 'include'
         })
         if (response.ok) alert("Usunięto post poprawnie");
-        if (response.status === 404) alert("Nie znaleziono id posta, nie można go usunąć");
+        else if (response.status === 404) alert("Nie znaleziono id posta, nie można go usunąć");
         else alert("Nie udało się usunąć posta");
     }
     catch (error) {
@@ -167,7 +167,6 @@ export default function PostViewComponent() {
         <div className="post-view-component" onScroll={(e) => { handleScroll(e) }}>
             <SearchBar sendTag={setTagForPosts} />
             <CreatePost contentData={setContentData} />
-            <button onClick={(e) => { setContentPage(prevPage => prevPage + 1) }}>Testowansko</button>
             <PostFrame posts={postContents} onDelete={deletePost} />
         </div>
     )

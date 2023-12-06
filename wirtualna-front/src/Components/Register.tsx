@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import '../Styles/Register-Page.css'
 import Button from './Button'
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Register() {
@@ -9,15 +9,29 @@ export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordRepeat, setPasswordRepeat] = useState('');
-  var shouldNavigate: boolean = false;
   const nav = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    //Checking if passwords are the same
     if (password !== passwordRepeat) {
       alert("Hasła nie są takie same");
       return;
     }
+    //Checking if password is strong enough
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]).+$/;
+    if (!passwordRegex.test(password)) {
+      alert("Hasło musi zawierać przynajmniej jedną wielką literę i jeden znak specjalny");
+      return;
+    }
+
+    //Checking if email is valid
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("Podaj poprawny adres e-mail");
+      return;
+    }
+
     try {
       const sendData = {
         userName: login,
@@ -34,7 +48,7 @@ export default function Register() {
         body: JSON.stringify(sendData)
       })
         .then(response => response.json())
-        .then(()=>{
+        .then(() => {
           nav("/contents");
         })
     } catch (error) {
@@ -52,6 +66,8 @@ export default function Register() {
               <label>Login:</label>
               <input
                 type="text"
+                minLength={5}
+                maxLength={16}
                 placeholder="Wprowadź nazwę użytkownika"
                 value={login}
                 onChange={(e) => setName(e.target.value)}
@@ -74,6 +90,8 @@ export default function Register() {
                 type="password"
                 placeholder="Wprowadź hasło"
                 value={password}
+                minLength={8}
+                maxLength={20}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
