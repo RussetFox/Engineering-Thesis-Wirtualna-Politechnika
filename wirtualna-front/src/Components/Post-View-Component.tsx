@@ -3,11 +3,9 @@ import '../Styles/Post-View-Component.css'
 import '../Styles/Create-Post-Component.css'
 import SearchBar from "./Search-Bar-Component";
 import PostFrame from "./Post-Frame";
-import { PostFrameProps } from "./Post-Frame";
 import CreatePost from "./Create-Post-Component";
 import { postData } from "./Create-Post-Component"
 import { PostContents } from "./Post-Component";
-import { get } from "http";
 //Posting content to backend
 
 async function postToBack(data: postData) {
@@ -46,6 +44,8 @@ async function getFromBack(pageNumber: number) {
     }
 }
 
+//Getting content from backend by tag
+
 async function getFromBackByTag(tag: string) {
     try {
         const response = await fetch('http://localhost:8080/content/tag/' + tag, {
@@ -60,7 +60,22 @@ async function getFromBackByTag(tag: string) {
     }
 
 }
-// async function getFromBack(data)
+// Deleting content from backend
+async function deleteFromBack(contentId: number) {
+    try {
+        const response = await fetch('http://localhost:8080/content/' + contentId, {
+            method: 'DELETE',
+            credentials: 'include'
+        })
+        if (response.ok) alert("Usunięto post poprawnie");
+        if (response.status === 404) alert("Nie znaleziono id posta, nie można go usunąć");
+        else alert("Nie udało się usunąć posta");
+    }
+    catch (error) {
+
+        alert("Nie udało się usunąć posta");
+    }
+}
 
 
 //_____________Post view component logic_______________________________
@@ -71,9 +86,9 @@ export default function PostViewComponent() {
     //Zarządzanie logiką wyświetlania postów po tagach
     const [tagForPosts, setTagForPosts] = useState(() => { return '' });
     useEffect(() => {
-        if(tagForPosts !== '')
-        getFromBackByTag(tagForPosts)
-            .then((data) => setPostContents(data));
+        if (tagForPosts !== '')
+            getFromBackByTag(tagForPosts)
+                .then((data) => setPostContents(data));
     }, [tagForPosts])
 
     //Handling posting new content and listing it to existing posts
@@ -91,6 +106,12 @@ export default function PostViewComponent() {
                     .then((data) => setPostContents(data)))
         }
     }, [contentData])
+
+    const deletePost = (contentIdToDelete: number) => {
+        const updatedPosts = postContents.filter((post) => post.contentId !== contentIdToDelete);
+        deleteFromBack(contentIdToDelete);
+        setPostContents(updatedPosts);
+    }
 
     useEffect(() => {
         getFromBack(contentPage)
@@ -110,7 +131,7 @@ export default function PostViewComponent() {
             <SearchBar sendTag={setTagForPosts} />
             <CreatePost contentData={setContentData} />
             <button onClick={(e) => { setContentPage(prevPage => prevPage + 1) }}>Testowansko</button>
-            <PostFrame posts={postContents} />
+            <PostFrame posts={postContents} onDelete={deletePost} />
         </div>
     )
 }

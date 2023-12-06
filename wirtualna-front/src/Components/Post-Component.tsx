@@ -26,9 +26,10 @@ export class PostContents {
 
 export interface PostContentsProps {
     postContents: PostContents;
+    onDelete: (contentId: number) => void;
 }
 
-const SinglePostComponent: React.FC<PostContentsProps> = ({ postContents }) => {
+const SinglePostComponent: React.FC<PostContentsProps> = ({ postContents, onDelete}) => {
     const displayTime: string = moment(postContents.creationTime).fromNow();
     return (
         <div className='single-post-container'>
@@ -43,7 +44,7 @@ const SinglePostComponent: React.FC<PostContentsProps> = ({ postContents }) => {
                 <div className='post-description'>{postContents.description}</div>
             </div>
             <div className='content-buttons-container'>
-                <button>Delete</button>
+                <button onClick={() => onDelete(postContents.contentId)}>Delete</button>
             </div>
         </div>
 
