@@ -45,7 +45,7 @@ public class ContentServiceImpl implements ContentService {
         List<ContentDTO> dtoList = new ArrayList<>();
         for (Content content : contentList) {
             ContentDTO dto = new ContentDTO(content.getId(), content.getDescription(),
-                    content.getCreationTime(), content.getTags(), content.getAuthor().getUsername(), content.getLikes());
+                    content.getCreationTime(), content.getTags(), content.getAuthor().getUsername(), content.getLikes(), content.getComments());
             dtoList.add(dto);
         }
         return dtoList;
@@ -57,7 +57,7 @@ public class ContentServiceImpl implements ContentService {
         List<ContentDTO> dtoList = new ArrayList<>();
         for (Content content : contentList) {
             ContentDTO dto = new ContentDTO(content.getId(), content.getDescription(),
-                    content.getCreationTime(), content.getTags(), content.getAuthor().getUsername(), content.getLikes());
+                    content.getCreationTime(), content.getTags(), content.getAuthor().getUsername(), content.getLikes(), content.getComments());
             dtoList.add(dto);
         }
         return dtoList;

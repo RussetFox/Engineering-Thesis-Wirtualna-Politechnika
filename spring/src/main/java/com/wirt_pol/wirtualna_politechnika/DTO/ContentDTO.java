@@ -1,5 +1,6 @@
 package com.wirt_pol.wirtualna_politechnika.DTO;
 
+import com.wirt_pol.wirtualna_politechnika.entity.Comment;
 import com.wirt_pol.wirtualna_politechnika.entity.Content;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,6 +21,7 @@ public class ContentDTO {
     private List<String> tags;
     private String author;
     private int likes;
+    private List<Comment> comments;
 
     public static ContentDTO fromContent(Content content){
         ContentDTO dto = new ContentDTO();
@@ -29,6 +31,7 @@ public class ContentDTO {
         dto.setTags(content.getTags());
         dto.setAuthor(content.getAuthor().getUsername());
         dto.setLikes(content.getLikes());
+        dto.setComments(content.getComments());
         return dto;
     }
 }

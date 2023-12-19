@@ -34,6 +34,9 @@ public class Content {
     @ElementCollection
     private List<String> tags = new ArrayList<>();
 
+    @OneToMany(mappedBy = "content", fetch = FetchType.EAGER)
+    private List<Comment> comments = new ArrayList<>();
+
     @Column(name = "when_created")
     @CreationTimestamp
     private LocalDateTime creationTime;
