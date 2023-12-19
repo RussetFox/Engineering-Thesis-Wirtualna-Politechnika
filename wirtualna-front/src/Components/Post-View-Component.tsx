@@ -64,7 +64,7 @@ async function getFromBackByTag(tag: string) {
 // Deleting content from backend
 async function deleteFromBack(contentId: number) {
     try {
-        const response = await fetch('http://localhost:8080/content/' + contentId, {
+        const response = await fetch('http://localhost:8080/content/admin/' + contentId, {
             method: 'DELETE',
             credentials: 'include'
         })

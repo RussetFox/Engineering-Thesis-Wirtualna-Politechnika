@@ -19,6 +19,7 @@ public class ContentDTO {
     private LocalDateTime creationTime;
     private List<String> tags;
     private String author;
+    private int likes;
 
     public static ContentDTO fromContent(Content content){
         ContentDTO dto = new ContentDTO();
@@ -27,6 +28,7 @@ public class ContentDTO {
         dto.setCreationTime(content.getCreationTime());
         dto.setTags(content.getTags());
         dto.setAuthor(content.getAuthor().getUsername());
+        dto.setLikes(content.getLikes());
         return dto;
     }
 }

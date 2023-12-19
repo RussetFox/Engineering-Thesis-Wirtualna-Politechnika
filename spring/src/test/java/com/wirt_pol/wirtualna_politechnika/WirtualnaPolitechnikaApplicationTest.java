@@ -108,16 +108,16 @@ public class WirtualnaPolitechnikaApplicationTest {
 
         User savedUser = userService.saveUser(user);
 
-        Long userId = savedUser.getId();
+        String username = savedUser.getUsername();
 
         Role role = Role.builder()
                 .role("JIMBRO")
                 .build();
 
         Role savedRole = roleService.saveRole(role);
-        Long roleId = savedRole.getId();
+        String rolename = savedRole.getRole();
 
-        ResponseEntity<?> response = userService.assignRoleToUser(userId.toString(), roleId.toString());
+        ResponseEntity<?> response = userService.assignRoleToUser(username, rolename);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }

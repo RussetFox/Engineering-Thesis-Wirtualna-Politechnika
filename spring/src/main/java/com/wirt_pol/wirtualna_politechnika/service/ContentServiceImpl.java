@@ -45,7 +45,7 @@ public class ContentServiceImpl implements ContentService {
         List<ContentDTO> dtoList = new ArrayList<>();
         for (Content content : contentList) {
             ContentDTO dto = new ContentDTO(content.getId(), content.getDescription(),
-                    content.getCreationTime(), content.getTags(), content.getAuthor().getUsername());
+                    content.getCreationTime(), content.getTags(), content.getAuthor().getUsername(), content.getLikes());
             dtoList.add(dto);
         }
         return dtoList;
@@ -57,7 +57,7 @@ public class ContentServiceImpl implements ContentService {
         List<ContentDTO> dtoList = new ArrayList<>();
         for (Content content : contentList) {
             ContentDTO dto = new ContentDTO(content.getId(), content.getDescription(),
-                    content.getCreationTime(), content.getTags(), content.getAuthor().getUsername());
+                    content.getCreationTime(), content.getTags(), content.getAuthor().getUsername(), content.getLikes());
             dtoList.add(dto);
         }
         return dtoList;
@@ -125,7 +125,19 @@ public class ContentServiceImpl implements ContentService {
 
         return mostRepeatingTags;
     }
-
+    @Override
+    public void likeContent(Long id){
+        Content content = contentRepository.findById(id).orElseThrow(() -> new optionalContentNotFoundException(id));
+        content.setLikes(content.getLikes() + 1);
+        contentRepository.save(content);
+    }
+    
+    @Override
+    public void dislikeContent(Long id){
+        Content content = contentRepository.findById(id).orElseThrow(() -> new optionalContentNotFoundException(id));
+        content.setLikes(content.getLikes() - 1);
+        contentRepository.save(content);
+    }
     @Override
     public int fetchNumberOfPages(){
         int pageSize = 15;

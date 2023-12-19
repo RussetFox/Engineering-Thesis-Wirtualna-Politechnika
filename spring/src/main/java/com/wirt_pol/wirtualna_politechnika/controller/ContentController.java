@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 
 @CrossOrigin
@@ -25,6 +29,16 @@ public class ContentController {
     @GetMapping("/content")
     public List<ContentDTO> fetchContentList(){
         return contentService.fetchContentList();
+    }
+
+    @PutMapping("content/like/{id}")
+    public void likeContent(@PathVariable Long id){
+        contentService.likeContent(id);
+    }
+
+    @PutMapping("content/dislike/{id}")
+    public void dislikeContent(@PathVariable Long id){
+        contentService.dislikeContent(id);
     }
 
     @GetMapping("/content/id/{id}")
@@ -47,11 +61,11 @@ public class ContentController {
     public ResponseEntity<Content> createContent(@Valid @RequestBody Content content){
         return contentService.createContent(content);
     }
-    @PutMapping("/content/edit/{id}")
+    @PutMapping("/content/admin/edit/{id}")
     public String editContent(@Valid @RequestBody Content content, @PathVariable Long id ){
         return contentService.editContent(content, id);
     }
-    @DeleteMapping("/content/{id}")
+    @DeleteMapping("/content/admin/{id}")
     public void deleteContentById(@PathVariable("id") Long contentId){
         contentService.deleteContentById(contentId);
     }

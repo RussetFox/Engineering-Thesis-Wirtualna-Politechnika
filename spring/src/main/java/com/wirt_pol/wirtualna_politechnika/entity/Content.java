@@ -28,6 +28,8 @@ public class Content {
     @Column(name = "description", length = 4096)
     private String description;
 
+    @Column(name = "likes")
+    private int likes;
 
     @ElementCollection
     private List<String> tags = new ArrayList<>();

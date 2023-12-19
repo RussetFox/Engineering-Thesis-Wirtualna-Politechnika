@@ -22,6 +22,9 @@ public interface ContentService {
     String editContent(Content content, Long contentId);
 
     List<String> getMostRepeatingTagsWithPrefix(String prefix);
+    
+    void likeContent(Long contentId);
+    void dislikeContent(Long contentId);
 
     void deleteContentById(Long contentId);
     
