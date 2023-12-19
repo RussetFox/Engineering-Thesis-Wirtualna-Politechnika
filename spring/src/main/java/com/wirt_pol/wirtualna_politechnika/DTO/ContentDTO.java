@@ -9,6 +9,7 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -21,9 +22,9 @@ public class ContentDTO {
     private List<String> tags;
     private String author;
     private int likes;
-    private List<Comment> comments;
+    private List<CommentDTO> comments;
 
-    public static ContentDTO fromContent(Content content){
+    public static ContentDTO fromContent(Content content) {
         ContentDTO dto = new ContentDTO();
         dto.setContentId(content.getId());
         dto.setDescription(content.getDescription());
@@ -31,7 +32,12 @@ public class ContentDTO {
         dto.setTags(content.getTags());
         dto.setAuthor(content.getAuthor().getUsername());
         dto.setLikes(content.getLikes());
-        dto.setComments(content.getComments());
+        if (content.getComments() != null) {
+            List<CommentDTO> commentDTOs = content.getComments().stream()
+                    .map(comment -> CommentDTO.fromComment(comment))
+                    .collect(Collectors.toList());
+            dto.setComments(commentDTOs);
+        }
         return dto;
     }
 }
