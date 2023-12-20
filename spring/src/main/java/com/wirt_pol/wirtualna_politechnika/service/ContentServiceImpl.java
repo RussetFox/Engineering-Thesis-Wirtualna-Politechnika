@@ -166,6 +166,22 @@ public class ContentServiceImpl implements ContentService {
     }
 
     @Override
+    public void likeComment(Long commentId) {
+        Comment comment = commentRepository.findById(commentId)
+                .orElseThrow(() -> new optionalContentNotFoundException(commentId));
+        comment.setLikes(comment.getLikes() + 1);
+        commentRepository.save(comment);
+    }
+
+    @Override
+    public void dislikeComment(Long commentId) {
+        Comment comment = commentRepository.findById(commentId)
+                .orElseThrow(() -> new optionalContentNotFoundException(commentId));
+        comment.setLikes(comment.getLikes() - 1);
+        commentRepository.save(comment);
+    }
+
+    @Override
     public int fetchNumberOfPages() {
         int pageSize = 15;
         long totalElements = contentRepository.count();

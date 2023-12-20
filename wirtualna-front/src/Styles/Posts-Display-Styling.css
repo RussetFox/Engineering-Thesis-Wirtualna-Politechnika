@@ -46,7 +46,7 @@
 }
 
 .author-name {
-    font-size: 20px;
+    font-size: 24px;
     width: 100%;
     font-weight: 600;
     overflow: hidden;
@@ -66,6 +66,7 @@
 .passed-date {
     font-weight: 600;
     padding: 5px;
+    font-size:22px;
     color: #813CAC;
     margin-left: 1%;
 }
@@ -74,7 +75,7 @@
     height: 80%;
     font-weight: 500;
     margin-left:1%;
-    font-size: 20px;
+    font-size: 28px;
     margin-top: 1px;
 }
 

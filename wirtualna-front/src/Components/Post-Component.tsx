@@ -7,6 +7,7 @@ import LikedIcon from '../Resources/Icons/LikedHeart.png'
 import DeleteIcon from '../Resources/Icons/Trash-Icon.png'
 import CommentIcon from '../Resources/Icons/CommentIcon.png'
 import { Comment } from './Single-Comment-Component'
+import CreateComment from './Create-Comment-Component';
 import CommentSection from './Comment-Section';
 
 async function handleLike(likeSet: React.Dispatch<React.SetStateAction<boolean>>,
@@ -50,6 +51,7 @@ const SinglePostComponent: React.FC<PostContentsProps> = ({ postContents, onDele
     const displayTime: string = moment(postContents.creationTime).fromNow();
     const [liked, setLiked] = useState(() => { return false });
     const [likeCount, setLikeCount] = useState(() => { return postContents.likes });
+    const [wantToComment, setWantToComment] = useState(() => { return false });
 
     return (
         <div className='post-and-comment-frame'>
@@ -69,13 +71,13 @@ const SinglePostComponent: React.FC<PostContentsProps> = ({ postContents, onDele
                                 : <img className='like-button' src={UnLikedIcon} onClick={() => handleLike(setLiked, setLikeCount, postContents.contentId)} alt='like' />}
                             <text className='like-counter'>{likeCount}</text>
                         </div>
-                        <img className='comment-button' src={CommentIcon} alt='comment' />
-                        <img className='delete-button' src={DeleteIcon} onClick={() => onDelete(postContents.contentId)} />
-
+                        <img className='comment-button' src={CommentIcon} onClick = {() => setWantToComment(wantToComment=>!wantToComment)} alt='comment' />
+                        <img className='delete-button' src={DeleteIcon} onClick={() => onDelete(postContents.contentId)} alt='delete' />
+                    
                     </div>
                 </div>
-
             </div>
+            {wantToComment && <CreateComment postId={postContents.contentId} />}
             <CommentSection comments={postContents.comments} />
         </div>
 

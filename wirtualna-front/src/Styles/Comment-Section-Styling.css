@@ -5,10 +5,10 @@
     align-items: center;
 }
 
-.comment-frame{
+.comment-frame {
     display: flex;
     flex-direction: row;
-    justify-content:flex-start;
+    justify-content: flex-start;
     background-color: #ededed;
     margin-bottom: 15px;
     border-radius: 50px;
@@ -16,17 +16,20 @@
     width: 90%;
 }
 
-.comment-profile-picture{
+.comment-profile-picture {
     border-right: 1px solid #31427D;
-    width: 100px;
-    padding:5px;
+    width: 90px;
+    height: 90px;
+    align-self: center;
+    padding: 5px;
     border-radius: 100%;
     border: none;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.comment-author-text-frame{
+
+.comment-author-text-frame {
     width: 83%;
     margin-left: 5px;
     display: flex;
@@ -36,33 +39,89 @@
 
 }
 
-.comment-like-frame{
+.comment-like-container {
     display: flex;
     flex-direction: row;
-    width: 25%;
+    justify-content:left;
+    align-items: center;
+    width: 10%;
 }
 
-.comment-author{
-    font-size: 20px;
+.comment-author {
+    font-size: 22px;
     font-weight: bold;
     color: #31427D;
-    padding:2px;
+    padding: 2px;
 
 }
-.comment-text{
+
+.comment-text {
     font-size: 25px;
 }
-.comment-like-button{
+
+.comment-like-button {
     width: 28px;
-    padding:2px;
+    padding: 2px;
 }
-.load-comments-button{
+.comment-like-counter{
+    font-size: 18px;
+    font-weight: bold;
+    padding: 2px;
+
+}
+
+.load-comments-button {
     border: 1px;
     background-color: rgba(237, 237, 237, 0);
-    color:#E58B47;
+    color: #E58B47;
     font-size: 25px;
     text-decoration: underline;
     cursor: pointer;
-    text-shadow:0px 1px 0px #c0804f;
-    padding:10px;
+    text-shadow: 0px 1px 0px #c0804f;
+    padding: 10px;
+}
+
+
+.comment-field-container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.comment-input-container {
+    width: 100%;
+}
+
+.comment-field {
+    width: 100%;
+    overflow-y:auto;
+    resize: none;
+    text-align:start;
+    border: none;
+    border-radius: 50px;
+    padding: 25px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.25);
+    font-size: 25px;
+}
+
+.comment-submit-button {
+    align-self: center;
+    border-radius: 30px;
+    height: 15%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    align-self: end;
+    padding: 10px;
+    width: 20%;
+    color: rgba(255, 255, 255, 0.90);
+    background: #31427D;
+    text-shadow: #000;
+    text-align: center;
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.25);
+    font-size: 25px;
+    font-weight: 700;
 }

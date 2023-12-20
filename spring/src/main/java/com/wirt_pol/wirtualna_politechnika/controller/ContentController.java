@@ -42,6 +42,15 @@ public class ContentController {
         contentService.dislikeContent(id);
     }
 
+    @PutMapping("content/comment/like/{id}")
+    public void likeComment(@PathVariable Long id){
+        contentService.likeComment(id);
+    }
+    @PutMapping("content/comment/dislike/{id}")
+    public void dislikeComment(@PathVariable Long id){
+        contentService.dislikeComment(id);
+    }
+
     @GetMapping("/content/id/{id}")
     public ContentDTO fetchContentById(@PathVariable Long id){
         return contentService.fetchContentById(id);

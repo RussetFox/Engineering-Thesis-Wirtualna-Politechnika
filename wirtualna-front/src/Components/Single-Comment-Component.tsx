@@ -15,7 +15,7 @@ export interface Comment {
 }
 async function handleLike(likeSet: React.Dispatch<React.SetStateAction<boolean>>,
     increaseLikes: React.Dispatch<React.SetStateAction<number>>, postId: number) {
-    fetch('http://localhost:8080/content/like/' + postId, {
+    fetch('http://localhost:8080/content/comment/like/' + postId, {
         method: 'PUT',
         credentials: 'include'
     })
@@ -25,7 +25,7 @@ async function handleLike(likeSet: React.Dispatch<React.SetStateAction<boolean>>
 
 async function handleUnlike(likeSet: React.Dispatch<React.SetStateAction<boolean>>,
     decreaseLikes: React.Dispatch<React.SetStateAction<number>>, postId: number) {
-    fetch('http://localhost:8080/content/dislike/' + postId, {
+    fetch('http://localhost:8080/content/comment/dislike/' + postId, {
         method: 'PUT',
         credentials: 'include'
     })

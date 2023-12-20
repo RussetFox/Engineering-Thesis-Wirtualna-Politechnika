@@ -2,7 +2,6 @@ package com.wirt_pol.wirtualna_politechnika.service;
 
 import com.wirt_pol.wirtualna_politechnika.DTO.CommentDTO;
 import com.wirt_pol.wirtualna_politechnika.DTO.ContentDTO;
-import com.wirt_pol.wirtualna_politechnika.entity.Comment;
 import com.wirt_pol.wirtualna_politechnika.entity.Content;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -24,11 +23,18 @@ public interface ContentService {
     String editContent(Content content, Long contentId);
 
     List<String> getMostRepeatingTagsWithPrefix(String prefix);
-    
+
     void likeContent(Long contentId);
+
     void dislikeContent(Long contentId);
 
-    void deleteContentById(Long contentId);
+    void likeComment(Long commentId);
+
+    public void dislikeComment(Long commentId);
+
     void addComment(Long contentId, CommentDTO commentDTO);
+
+    void deleteContentById(Long contentId);
+
     int fetchNumberOfPages();
 }

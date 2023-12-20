@@ -29,6 +29,8 @@ public class Comment {
     @Column(name = "comment_text", length = 4096)
     private String commentText;
 
+    @Column(name = "likes")
+    private int likes;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "content_id", referencedColumnName = "id")
