@@ -29,9 +29,13 @@ public class Comment {
     @Column(name = "comment_text", length = 4096)
     private String commentText;
 
-    
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "content_id", referencedColumnName = "id")
     private Content content;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "author_id", referencedColumnName = "id")
+    private User author;
 
 }

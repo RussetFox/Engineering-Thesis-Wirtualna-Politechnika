@@ -15,13 +15,12 @@ public class CommentDTO {
     private Long commentId;
     private String commentText;
     private String author;
-    private Long contentId;
 
     public static CommentDTO fromComment(Comment comment){
         CommentDTO dto = new CommentDTO();
         dto.setCommentId(comment.getId());
         dto.setCommentText(comment.getCommentText());
-        dto.setContentId(comment.getContent().getId());
+        dto.setAuthor(comment.getAuthor().getUsername());
         return dto;
     }
     

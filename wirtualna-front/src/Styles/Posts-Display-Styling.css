@@ -4,7 +4,12 @@
     align-items: center;
     justify-content: center;
 }
-
+.post-and-comment-frame{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .single-post-container {
     display: flex;
     flex-direction: row;
@@ -104,4 +109,7 @@
     font-size: 20px;
 }
 
+.comment-text{
+    font-size:30px;
+}
 

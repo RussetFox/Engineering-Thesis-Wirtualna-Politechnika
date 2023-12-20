@@ -1,6 +1,8 @@
 package com.wirt_pol.wirtualna_politechnika.controller;
 
+import com.wirt_pol.wirtualna_politechnika.DTO.CommentDTO;
 import com.wirt_pol.wirtualna_politechnika.DTO.ContentDTO;
+import com.wirt_pol.wirtualna_politechnika.entity.Comment;
 import com.wirt_pol.wirtualna_politechnika.entity.Content;
 import com.wirt_pol.wirtualna_politechnika.service.ContentService;
 import jakarta.validation.Valid;
@@ -8,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -68,6 +69,10 @@ public class ContentController {
     @DeleteMapping("/content/admin/{id}")
     public void deleteContentById(@PathVariable("id") Long contentId){
         contentService.deleteContentById(contentId);
+    }
+    @PostMapping("/content/{id}/comment")
+    public void addComment(@PathVariable("id") Long contentId, @RequestBody CommentDTO contentDTO){
+        contentService.addComment(contentId, contentDTO);
     }
 
     @GetMapping("/content/numberOfPages")

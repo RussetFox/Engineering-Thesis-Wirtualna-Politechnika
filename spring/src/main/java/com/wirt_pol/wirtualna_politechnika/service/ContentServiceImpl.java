@@ -1,9 +1,12 @@
 package com.wirt_pol.wirtualna_politechnika.service;
 
+import com.wirt_pol.wirtualna_politechnika.DTO.CommentDTO;
 import com.wirt_pol.wirtualna_politechnika.DTO.ContentDTO;
+import com.wirt_pol.wirtualna_politechnika.entity.Comment;
 import com.wirt_pol.wirtualna_politechnika.entity.Content;
 import com.wirt_pol.wirtualna_politechnika.entity.User;
 import com.wirt_pol.wirtualna_politechnika.exception.optionalContentNotFoundException;
+import com.wirt_pol.wirtualna_politechnika.repository.CommentRepository;
 import com.wirt_pol.wirtualna_politechnika.repository.ContentRepository;
 import com.wirt_pol.wirtualna_politechnika.repository.UserRepository;
 import lombok.AllArgsConstructor;
@@ -25,11 +28,13 @@ import java.util.stream.Collectors;
 public class ContentServiceImpl implements ContentService {
     private final ContentRepository contentRepository;
     private final UserRepository userRepository;
+    private final CommentRepository commentRepository;
 
     @Override
     public ResponseEntity<Content> createContent(Content content) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User user = userRepository.findByUsername(authentication.getName()).orElseThrow(() -> new UsernameNotFoundException("Not found"));
+        User user = userRepository.findByUsername(authentication.getName())
+                .orElseThrow(() -> new UsernameNotFoundException("Not found"));
         content.setCreationTime(LocalDateTime.now());
         content.setAuthor(user);
         Content savedContent = contentRepository.save(content);
@@ -89,8 +94,10 @@ public class ContentServiceImpl implements ContentService {
     @Override
     public String editContent(Content newContent, Long oldContentId) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User user = userRepository.findByUsername(authentication.getName()).orElseThrow(() -> new UsernameNotFoundException("Not found"));
-        Content content = contentRepository.findById(oldContentId).orElseThrow(() -> new optionalContentNotFoundException(oldContentId));
+        User user = userRepository.findByUsername(authentication.getName())
+                .orElseThrow(() -> new UsernameNotFoundException("Not found"));
+        Content content = contentRepository.findById(oldContentId)
+                .orElseThrow(() -> new optionalContentNotFoundException(oldContentId));
         content.setTags(newContent.getTags());
         content.setAuthor(user);
         content.setDescription(newContent.getDescription());
@@ -125,24 +132,44 @@ public class ContentServiceImpl implements ContentService {
 
         return mostRepeatingTags;
     }
+
     @Override
-    public void likeContent(Long id){
+    public void likeContent(Long id) {
         Content content = contentRepository.findById(id).orElseThrow(() -> new optionalContentNotFoundException(id));
         content.setLikes(content.getLikes() + 1);
         contentRepository.save(content);
     }
-    
+
     @Override
-    public void dislikeContent(Long id){
+    public void addComment(Long contentId, CommentDTO commentDTO) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = userRepository.findByUsername(authentication.getName())
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+        Content content = contentRepository.findById(contentId)
+                .orElseThrow(() -> new optionalContentNotFoundException(contentId));
+
+        Comment comment = new Comment();
+        comment.setCommentText(commentDTO.getCommentText());
+        comment.setContent(content);
+        comment.setAuthor(user);
+
+        commentRepository.save(comment);
+
+    }
+
+    @Override
+    public void dislikeContent(Long id) {
         Content content = contentRepository.findById(id).orElseThrow(() -> new optionalContentNotFoundException(id));
         content.setLikes(content.getLikes() - 1);
         contentRepository.save(content);
     }
+
     @Override
-    public int fetchNumberOfPages(){
+    public int fetchNumberOfPages() {
         int pageSize = 15;
         long totalElements = contentRepository.count();
-        if(totalElements == 0){
+        if (totalElements == 0) {
             return 1;
         }
         return (int) Math.ceil((double) totalElements / pageSize);
