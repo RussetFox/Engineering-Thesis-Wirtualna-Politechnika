@@ -5,6 +5,9 @@ import Hear from '../Resources/Icons/BlancPic.jpg'
 import UnLikedIcon from '../Resources/Icons/HeartIcon.png'
 import LikedIcon from '../Resources/Icons/LikedHeart.png'
 import DeleteIcon from '../Resources/Icons/Trash-Icon.png'
+import CommentIcon from '../Resources/Icons/CommentIcon.png'
+import { Comment } from './Single-Comment-Component'
+import CommentSection from './Comment-Section';
 
 async function handleLike(likeSet: React.Dispatch<React.SetStateAction<boolean>>,
     increaseLikes: React.Dispatch<React.SetStateAction<number>>, postId: number) {
@@ -37,11 +40,6 @@ export interface PostContents {
     comments: Comment[];
 }
 
-export interface Comment {
-    commentId: number;
-    commentText: string;
-    author: string;
-}
 
 export interface PostContentsProps {
     postContents: PostContents;
@@ -52,7 +50,7 @@ const SinglePostComponent: React.FC<PostContentsProps> = ({ postContents, onDele
     const displayTime: string = moment(postContents.creationTime).fromNow();
     const [liked, setLiked] = useState(() => { return false });
     const [likeCount, setLikeCount] = useState(() => { return postContents.likes });
-    const [commentCount, setCommentCount] = useState(() => { return 0});
+
     return (
         <div className='post-and-comment-frame'>
             <div className='single-post-container'>
@@ -65,21 +63,20 @@ const SinglePostComponent: React.FC<PostContentsProps> = ({ postContents, onDele
                 <div className='post-content-container'>
                     <div className='passed-date'>{displayTime}</div>
                     <div className='post-description'>{postContents.description}</div>
-                </div>
-                <div className='content-buttons-container'>
-                    <img className='delete-button' src={DeleteIcon} onClick={() => onDelete(postContents.contentId)} />
-                    <div className='like-container'>
-                        {liked ? <img className='like-button' src={LikedIcon} onClick={() => handleUnlike(setLiked, setLikeCount, postContents.contentId)} />
-                            : <img className='like-button' src={UnLikedIcon} onClick={() => handleLike(setLiked, setLikeCount, postContents.contentId)} />}
-                        <text className='like-counter'>{likeCount}</text>
-                    </div>
+                    <div className='content-buttons-container'>
+                        <div className='like-container'>
+                            {liked ? <img className='like-button' src={LikedIcon} onClick={() => handleUnlike(setLiked, setLikeCount, postContents.contentId)} alt='dislike' />
+                                : <img className='like-button' src={UnLikedIcon} onClick={() => handleLike(setLiked, setLikeCount, postContents.contentId)} alt='like' />}
+                            <text className='like-counter'>{likeCount}</text>
+                        </div>
+                        <img className='comment-button' src={CommentIcon} alt='comment' />
+                        <img className='delete-button' src={DeleteIcon} onClick={() => onDelete(postContents.contentId)} />
 
+                    </div>
                 </div>
+
             </div>
-            {
-                postContents.comments.length > 0 && postContents.comments.map((comment, index) => (
-                    <div key={index} className='comment-text'>{comment.commentText}</div>))
-            }
+            <CommentSection comments={postContents.comments} />
         </div>
 
     )

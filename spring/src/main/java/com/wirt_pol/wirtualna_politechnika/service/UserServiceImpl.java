@@ -7,6 +7,7 @@ import com.wirt_pol.wirtualna_politechnika.exception.userNotFoundException;
 import com.wirt_pol.wirtualna_politechnika.repository.RoleRepository;
 import com.wirt_pol.wirtualna_politechnika.repository.UserRepository;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,10 +17,12 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository) {
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -38,12 +41,14 @@ public class UserServiceImpl implements UserService {
         return optionalUser.orElseThrow(() -> new userNotFoundException(userId));
     }
 
-    //Sprawdzenie czy 2 podane stringi są różne od siebie i czy 2 string nie jest pusty
+    // Sprawdzenie czy 2 podane stringi są różne od siebie i czy 2 string nie jest
+    // pusty
     public boolean stringNotEmptyOrEqual(String str1, String str2) {
         return !(str1.equalsIgnoreCase(str2) && str2.equals(""));
     }
 
-    //Funkcja zmiany nazwy użytkownika dla nowej nazwy użytkownika jeśli została ona zmieniona
+    // Funkcja zmiany nazwy użytkownika dla nowej nazwy użytkownika jeśli została
+    // ona zmieniona
     public void changeUnIfNotEmpty(User oldUser, User newUser) {
         String oldUsername = oldUser.getUsername(), newUserName = newUser.getUsername();
         if (stringNotEmptyOrEqual(oldUsername, newUserName)) {
@@ -51,21 +56,21 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    //Funkcja zmiany maila użytkownika dla nowego maila jeśli został zmieniony
+    // Funkcja zmiany maila użytkownika dla nowego maila jeśli został zmieniony
     public void changeMailIfNotEmpty(User oldUser, User newUser) {
         String oldMail = oldUser.getEmail(), newMail = newUser.getEmail();
         if (stringNotEmptyOrEqual(oldMail, newMail))
             oldUser.setEmail(newMail);
     }
 
-    //Funckja zmieniająca hasło użytkownika jeśli to zostało zmienione
+    // Funckja zmieniająca hasło użytkownika jeśli to zostało zmienione
     public void changePasswIfNotEmpty(User oldUser, User newUser) {
         String oldPassw = oldUser.getPassword(), newPassw = newUser.getPassword();
         if (stringNotEmptyOrEqual(oldPassw, newPassw))
-            oldUser.setPassword(newPassw);
+            oldUser.setPassword(passwordEncoder.encode(newPassw));
     }
 
-    //Aktualizowanie danych użytkownika
+    // Aktualizowanie danych użytkownika
     @Override
     public User updateUser(User user, Long userId) {
 

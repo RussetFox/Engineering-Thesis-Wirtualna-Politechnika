@@ -1,0 +1,68 @@
+.all-comments-for-post-frame {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.comment-frame{
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+    background-color: #ededed;
+    margin-bottom: 15px;
+    border-radius: 50px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    width: 90%;
+}
+
+.comment-profile-picture{
+    border-right: 1px solid #31427D;
+    width: 100px;
+    padding:5px;
+    border-radius: 100%;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.comment-author-text-frame{
+    width: 83%;
+    margin-left: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+
+}
+
+.comment-like-frame{
+    display: flex;
+    flex-direction: row;
+    width: 25%;
+}
+
+.comment-author{
+    font-size: 20px;
+    font-weight: bold;
+    color: #31427D;
+    padding:2px;
+
+}
+.comment-text{
+    font-size: 25px;
+}
+.comment-like-button{
+    width: 28px;
+    padding:2px;
+}
+.load-comments-button{
+    border: 1px;
+    background-color: rgba(237, 237, 237, 0);
+    color:#E58B47;
+    font-size: 25px;
+    text-decoration: underline;
+    cursor: pointer;
+    text-shadow:0px 1px 0px #c0804f;
+    padding:10px;
+}

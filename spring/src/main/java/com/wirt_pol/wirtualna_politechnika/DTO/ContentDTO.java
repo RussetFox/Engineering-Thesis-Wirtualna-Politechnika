@@ -34,6 +34,7 @@ public class ContentDTO {
         dto.setLikes(content.getLikes());
         if (content.getComments() != null) {
             List<CommentDTO> commentDTOs = content.getComments().stream()
+                    .sorted((comment1, comment2) -> comment2.getId().compareTo(comment1.getId()))
                     .map(comment -> CommentDTO.fromComment(comment))
                     .collect(Collectors.toList());
             dto.setComments(commentDTOs);

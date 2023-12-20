@@ -30,6 +30,5 @@ public interface ContentService {
 
     void deleteContentById(Long contentId);
     void addComment(Long contentId, CommentDTO commentDTO);
-    
     int fetchNumberOfPages();
 }
